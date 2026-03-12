@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exam Books</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+}
+
+/* TITLE */
+
+h1{
+margin:40px 0;
+text-align:center;
+}
+
+/* BOOK GRID */
+
+.book-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+/* BOOK CARD */
+
+.book-card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.4s;
+text-align:center;
+cursor:pointer;
+}
+
+.book-card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* IMAGE */
+
+.book-card img{
+width:120px;
+height:170px;
+object-fit:cover;
+margin-bottom:10px;
+border-radius:6px;
+}
+
+/* PRICE */
+
+.price{
+color:green;
+font-weight:bold;
+margin:5px 0;
+}
+
+/* RATING */
+
+.rating{
+color:orange;
+font-size:18px;
+margin-bottom:10px;
+}
+
+/* BUTTON */
+
+.btn-custom{
+padding:8px 14px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin:5px;
+}
+
+.show{
+background:#00bcd4;
+color:white;
+}
+
+.order{
+background:#4CAF50;
+color:white;
+}
+
+.btn-custom:hover{
+opacity:0.8;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+
+footer{
+background:#0f172a;
+color:white;
+margin-top:60px;
+padding:50px 0;
+}
+
+.footer-link{
+display:block;
+color:#cbd5e1;
+text-decoration:none;
+margin-top:8px;
+}
+
+.footer-link:hover{
+color:#22c55e;
+padding-left:5px;
+transition:0.3s;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.book-card img{
+width:100px;
+height:150px;
+}
+
+}
+.footer-link{
+display:block;
+color:#cbd5e1;
+text-decoration:none;
+margin-top:8px;
+}
+
+.footer-link:hover{
+color:#22c55e;
+padding-left:5px;
+transition:0.3s;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#">ExamPrep</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="exam.html">Exam Pattern</a></li>
+<li class="nav-item"><a class="nav-link" href="book.html">Books</a></li>
+<li class="nav-item"><a class="nav-link" href="quize.html">Quiz</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<h1>Popular Study Books</h1>
+
+<div class="book-container">
+
+<!-- BOOK 1 -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book4.jpg">
+
+<h3>NCERT</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹650</div>
+<a href="https://onlinebookzone.com/shop/world-inbox-books/ncert-book/?srsltid=AfmBOopxpAipsV1_K0LL4Xf5ex8W9MVA5IjhCwIqACuHr8ClQCUBeKvs">
+<button class="btn-custom show" onclick="openBook('ssc-maths.html')">Show Book</button>
+</a>
+<a href="https://www.vedantu.com/ncert-books">
+<button class="btn-custom order" onclick="orderBook()">Order Book</button>
+</a>
+
+</div>
+
+
+<!-- BOOK 2 -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book5.jpg">
+
+<h3>CCE</h3>
+
+<div class="rating">⭐⭐⭐⭐⭐</div>
+
+<div class="price">₹299.00</div>
+<a href="https://www.scribd.com/document/808526471/KD-E-Book-CCE-Mains-Gujarati">
+<button class="btn-custom show" onclick="openBook('reasoning.html')">Show Book</button>
+</a>
+<a href="https://www.amazon.in/Combined-Competitive-Examination-SSC-RRB-IBPS-Administrative/dp/B0CTHM8W37">
+<button class="btn-custom order" onclick="orderBook()">Order Book</button>
+</a>
+</div>
+
+
+<!-- BOOK 3 -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book6.jpg">
+
+<h3>ગુજરાતી વ્યાકરણ અને શબ્દભંડોળ</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹270</div>
+<a href="https://www.scribd.com/document/768643811/%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AB%80-%E0%AA%B5-%E0%AA%AF%E0%AA%BE%E0%AA%95%E0%AA%B0%E0%AA%A3-%E0%AA%85%E0%AA%A8%E0%AB%87-%E0%AA%B6%E0%AA%AC-%E0%AA%A6%E0%AA%AD%E0%AA%82%E0%AA%A1%E0%AB%8B%E0%AA%B3">
+
+<button class="btn-custom show" onclick="openBook('english.html')">Show Book</button>
+</a>
+<a href="https://www.amdavadbooks.com/product/gujarati-vyakaran-shabdabhandol/">
+<button class="btn-custom order" onclick="orderBook()">Order Book</button>
+</a>
+</div>
+<!-- NEW BOOK -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book7.jpg">
+
+<h3>ગુજરાતની ભૂગોળ</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹300</div>
+<a href="https://www.scribd.com/document/330522903/%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AA%A8%E0%AB%80-%E0%AA%AD%E0%AB%82%E0%AA%97%E0%AB%8B%E0%AA%B3">
+
+<button class="btn-custom show" onclick="openBook('bookpage.html')">
+Show Book
+</button>
+</a>
+<a href="https://www.amazon.in/GUJARAT-BHUGOL-GEOGRAPHY-COLOUR-2026/dp/B0GDGDJKMT">
+<button class="btn-custom order" onclick="orderBook()">
+Order Book
+</button>
+</a>
+
+</div>
+<!-- NEW BOOK -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book8.jpg">
+
+<h3>ભારતનું બંધારણ અને રાજનીતિ</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹500.00</div>
+<a href="https://www.scribd.com/document/591650325/%E0%AA%AD%E0%AA%BE%E0%AA%B0%E0%AA%A4%E0%AA%A8%E0%AB%81%E0%AA%82-%E0%AA%AC%E0%AA%82%E0%AA%A7%E0%AA%BE%E0%AA%B0%E0%AA%A3-%E0%AA%B6%E0%AA%B9%E0%AB%87%E0%AA%9D%E0%AA%BE%E0%AA%A6-%E0%AA%95%E0%AA%BE%E0%AA%9D%E0%AB%80">
+<button class="btn-custom show" onclick="openBook('bookpage.html')">
+Show Book
+</button>
+</a>
+<a href="https://www.amazon.in/Bharat-Bandharan-Rajniti-Gujarat-Government/dp/B0C4FPZZX8">
+<button class="btn-custom order" onclick="orderBook()">
+Order Book
+</button>
+</a>
+
+</div>
+<!-- NEW BOOK -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book9.webp">
+
+<h3>ભારતનો સાંસ્કૃતિક વારસો</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹340</div>
+<a href="https://www.scribd.com/document/734191193/Bharat-Ane-Gujarat-Na-Sanskriti-Varso">
+<button class="btn-custom show" onclick="openBook('bookpage.html')">
+Show Book
+</button>
+</a>
+<a href="https://onlinebookzone.com/shop/yuva-upanishad-book/varso/?srsltid=AfmBOoqAPqi555YLEpOKNY78Zxk4HIfRrh1Z8ApHxyxaMSdCBh0IlHaH">
+<button class="btn-custom order" onclick="orderBook()">
+Order Book
+</button>
+</a>
+
+</div>
+<!-- NEW BOOK -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book10.webp">
+
+<h3>Reasoning</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹473</div>
+<a href="https://www.scribd.com/document/721335496/Maths-Reasoning-Gujarati-Pdf-By-Angle-Academy">
+<button class="btn-custom show" onclick="openBook('bookpage.html')">
+Show Book
+</button>
+</a>
+<a href="https://www.flipkart.com/6800-previous-years-questions-pyq-s-all-competitive-exam/p/itm1a44769e31570">
+<button class="btn-custom order" onclick="orderBook()">
+Order Book
+</button>
+</a>
+
+</div>
+<!-- NEW BOOK -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book11.jpg">
+
+<h3> સામાન્ય વિજ્ઞાન</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹240</div>
+<a href="https://www.scribd.com/document/390168464/%E0%AA%B8%E0%AA%BE%E0%AA%AE%E0%AA%BE%E0%AA%A8-%E0%AA%AF-%E0%AA%B5%E0%AA%BF%E0%AA%9C-%E0%AA%9E%E0%AA%BE%E0%AA%A8-600-MCQ-pdf">
+<button class="btn-custom show" onclick="openBook('bookpage.html')">
+Show Book
+</button>
+</a>
+<a href="https://jalarambookstore.com/detail/1783/abhayam-s-saamanya-vignan-guide-for-competitive-exam-2023?srsltid=AfmBOorVn4RBSmyl3oDIp5PNCz76T5ZyYmrpk4QUjU9R7wcxr6Pa_kCU">
+
+<button class="btn-custom order" onclick="orderBook()">
+Order Book
+</button>
+</a>
+
+</div>
+<!-- NEW BOOK -->
+
+<div class="book-card" onmouseover="hover(this)" onmouseout="leave(this)">
+
+<img src="book12.jpg">
+
+<h3>ભારતીય-અર્થતંત્ર</h3>
+
+<div class="rating">⭐⭐⭐⭐</div>
+
+<div class="price">₹300</div>
+<a href="https://www.scribd.com/document/872851281/Bharat-Nu-Arthtantra">
+<button class="btn-custom show" onclick="openBook('bookpage.html')">
+Show Book
+</button>
+</a>
+<a href="https://www.narodabook.com/bhartiya-arthtantra-liberty-publication-gujarati/?srsltid=AfmBOoqMjowMggEPsWISEqA0Q-aDeEbyoR_XyfPXOTJ5nrBJRXJl4YmQ">
+
+<button class="btn-custom order" onclick="orderBook()">
+Order Book
+</button>
+</a>
+
+</div>
+
+
+</div>
+
+
+<!-- MODERN FOOTER -->
+
+<footer style="background:#0f172a;color:white;padding:60px 0;margin-top:60px;">
+
+<div class="container">
+
+<div class="row g-4">
+
+<!-- ABOUT -->
+
+<div class="col-md-3">
+
+<h4 style="color:#22c55e;">ExamPrep</h4>
+
+<p style="color:#cbd5e1;">
+Best platform for competitive exam preparation.
+Here you can learn Reasoning, Maths, GK and more.
+</p>
+
+</div>
+
+
+<!-- QUICK LINKS -->
+
+<div class="col-md-3">
+
+<h5>Quick Links</h5>
+
+<a href="home.html" class="footer-link">Home</a>
+<a href="exam.html" class="footer-link">Exam Pattern</a>
+<a href="book.html" class="footer-link">Books</a>
+<a href="quize.html" class="footer-link">Quiz</a>
+
+</div>
+
+
+<!-- TOP EXAMS -->
+
+<div class="col-md-3">
+
+<h5>Top Exams</h5>
+
+<a href="ssc.html" class="footer-link">SSC</a>
+<a href="Talati.html" class="footer-link">Talati</a>
+<a href="GPSC.html" class="footer-link">GPSC</a>
+<a href="Railway.html" class="footer-link">Railway</a>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="col-md-3">
+
+<h5>Contact</h5>
+
+<p style="color:#cbd5e1;">📧 support@examprep.com</p>
+<p style="color:#cbd5e1;">📍 India</p>
+
+<div style="font-size:20px;margin-top:10px;">
+
+<span style="margin-right:10px;cursor:pointer;">🌐</span>
+<span style="margin-right:10px;cursor:pointer;">📘</span>
+<span style="margin-right:10px;cursor:pointer;">📷</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div style="border-top:1px solid #334155;margin-top:40px;padding-top:20px;text-align:center;color:#94a3b8;">
+
+© 2026 ExamPrep | All Rights Reserved
+
+</div>
+
+</div>
+
+</footer>
+```
+
+</body>
+
+</html>

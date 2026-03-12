@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCE Exam Dashboard - SSC Style</title>
+    <style>
+        :root {
+            --primary-blue: #003399;
+            --accent-orange: #ff9800;
+            --light-bg: #f0f4f8;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            background: var(--light-bg); 
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex; 
+            align-items: center; 
+            justify-content: space-around;
+            padding: 80px 10%; 
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            min-height: 50vh;
+        }
+        .hero-left { flex: 1; animation: fadeInLeft 1s ease-out; }
+        .hero-right { flex: 1; text-align: right; animation: fadeInRight 1s ease-out; }
+        .hero-right img { max-width: 400px; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1)); }
+
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 15px 35px; border: none; border-radius: 12px;
+            cursor: pointer; font-weight: 700; transition: 0.4s;
+            text-transform: uppercase; text-decoration: none; display: inline-block;
+        }
+        .btn-blue { background: var(--primary-blue); color: white; box-shadow: 0 10px 20px rgba(0, 51, 153, 0.2); }
+        .btn-blue:hover { transform: translateY(-5px); background: var(--accent-orange); }
+
+        /* --- INFO CARDS --- */
+        .info-cards {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; 
+            max-width: 1100px; 
+            margin: -50px auto 50px;
+            padding: 0 20px;
+        }
+        .card-item {
+            background: var(--white); 
+            padding: 25px; 
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--primary-blue);
+        }
+        .card-item h3 { color: var(--primary-blue); margin-top: 0; }
+
+        /* --- MODAL / TABLE --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white; margin: 5% auto; padding: 30px;
+            width: 75%; border-radius: 20px; max-height: 80vh; overflow-y: auto;
+        }
+        .close { float: right; font-size: 30px; cursor: pointer; color: red; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: var(--primary-blue); color: white; }
+        .sub-icon { width: 30px; vertical-align: middle; margin-right: 12px; }
+
+        /* --- BOOKS SECTION --- */
+        .section-title { text-align: center; color: var(--primary-blue); font-size: 2rem; margin-bottom: 30px; }
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px; max-width: 1100px; margin: 0 auto 60px; padding: 0 20px;
+        }
+        .book-card {
+            background: white; border-radius: 15px; padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center;
+            transition: 0.3s;
+        }
+        .book-card:hover { transform: translateY(-10px); }
+        .book-img { height: 180px; margin-bottom: 15px; }
+        .book-img img { max-height: 100%; }
+        .buy-btn {
+            width: 100%; padding: 12px; background: #27ae60; 
+            color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-right { order: -1; margin-bottom: 30px; }
+        }
+        .syllabus-container {
+        padding: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .tier-header {
+        background: #002366;
+        color: white;
+        padding: 12px 20px;
+        margin-top: 30px;
+        border-radius: 8px 8px 0 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .syllabus-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .syllabus-table th, .syllabus-table td {
+        padding: 15px;
+        text-align: left;
+        border: 1px solid #eee;
+    }
+    .syllabus-table th {
+        background: #f8f9fa;
+        color: #333;
+    }
+    .sub-icon {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        margin-right: 12px;
+    }
+    .subject-name {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+     .back-home-btn {
+    padding: 15px 40px; 
+    background: var(--cce-purple); 
+    color:black; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s; /* માઉસ લઈ જતી વખતે સ્મૂધ લાગે તે માટે */
+}
+
+/* જ્યારે માઉસ બટન પર જશે ત્યારે જ આ થશે */
+.back-home-btn:hover {
+    background: var(--cce-gold); /* કલર બદલાઈને ગોલ્ડ થશે */
+    transform: translateY(-3px); /* બટન સહેજ ઉપર જશે */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* હળવો પડછાયો આવશે */
+}
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-left">
+        <h1 style="font-size: 45px; color: var(--primary-blue);">GPSC <br><span style="color: var(--accent-orange);">Exam 2026</span></h1>
+        <p>સરકારી અધિકારી બનવાનું તમારું સપનું હવે થશે સાકાર.</p>
+        <button class="btn btn-blue" onclick="openSyllabus()">📋 View Exam Syllabus</button>
+    </div>
+    <div class="hero-right">
+        <img src="https://cdn-icons-png.flaticon.com/512/201/201402.png" alt="Exam Icon">
+    </div>
+</section>
+
+<div class="info-cards">
+    <div class="card-item">
+        <h3>🏢 Group A Posts</h3>
+        <p>હેડ ક્લાર્ક અને ઓફિસ આસિસ્ટન્ટ જેવી ઉચ્ચ વહીવટી પોસ્ટ.</p>
+    </div>
+    <div class="card-item">
+        <h3>📂 Group B Posts</h3>
+        <p>સિનિયર ક્લાર્ક અને વિવિધ વિભાગીય ક્લેરિકલ પોસ્ટ.</p>
+    </div>
+</div>
+
+<div id="syllabusModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSyllabus()">&times;</span>
+        <h2 style="color: var(--primary-blue);">📊 Detailed Syllabus Table</h2>
+        <div class="syllabus-container">
+
+    <div class="tier-header">🏁 Tier 1: Prelims Exam (Objective)</div>
+    <table class="syllabus-table">
+        <thead>
+            <tr>
+                <th>વિષય (Subject)</th>
+                <th>મુખ્ય ટોપિક્સ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="subject-name">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2950/2950645.png" class="sub-icon"> 
+                    General Awareness
+                </td>
+                <td>History, Geography, Culture, Current Affairs</td>
+            </tr>
+            <tr>
+                <td class="subject-name">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1739/1739431.png" class="sub-icon"> 
+                    Mathematics
+                </td>
+                <td>Arithmetic, Algebra, Geometry, Statistics</td>
+            </tr>
+            <tr>
+                <td class="subject-name">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3011/3011218.png" class="sub-icon"> 
+                    Reasoning
+                </td>
+                <td>Logical Reasoning, Coding, Blood Relations</td>
+            </tr>
+            <tr>
+                <td class="subject-name">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2821/2821735.png" class="sub-icon"> 
+                    General Science
+                </td>
+                <td>Physics, Chemistry, Biology & Tech (10th Level)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tier-header">✍️ Tier 2: Mains Exam (Descriptive)</div>
+    <table class="syllabus-table">
+        <thead>
+            <tr>
+                <th>પેપર (Papers)</th>
+                <th>મુખ્ય વિષયો</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="subject-name">📜 Paper 1: Gujarati</td>
+                <td>નિબંધ લેખન, વિચાર વિસ્તાર, ગુજરાતી વ્યાકરણ, પત્ર લેખન.</td>
+            </tr>
+            <tr>
+                <td class="subject-name">📜 Paper 2: English</td>
+                <td>Essay, Letter Writing, Report Writing, English Grammar.</td>
+            </tr>
+            <tr>
+                <td class="subject-name">📜 Paper 3: Essay</td>
+                <td>વર્તમાન સામાજિક અને રાજકીય મુદ્દાઓ પર નિબંધ લેખન.</td>
+            </tr>
+            <tr>
+                <td class="subject-name">📜 Paper 4, 5, 6: GS</td>
+                <td>General Studies (ઇતિહાસ, અર્થતંત્ર, વિજ્ઞાન અને બંધારણ).</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+        <br>
+        <button class="btn btn-blue" onclick="closeSyllabus()">Close Window</button>
+    </div>
+</div>
+
+<h2 class="section-title">📚 Preparation Books</h2>
+<div class="book-grid">
+    <div class="book-card">
+        <div class="book-img"><img src="book33.jpg" alt="Book"></div>
+        <h4>GPSC</h4>
+        <p style="font-weight: bold; color: var(--accent-orange);">₹550</p>
+        <a href="https://jalarambookstore.com/detail/1249/gpsc?srsltid=AfmBOopzE3NxfGGgEHOqqXBTnLjLvBDuL2bWEkWKvKz9QP5fX3aFB1qo">
+        <button class="buy-btn">Buy Now</button>
+        </a>
+    </div>
+    <div class="book-card">
+        <div class="book-img"><img src="book34.webp" alt="Book"></div>
+        <h4>
+જાહેર-વહીવત</h4>
+        <p style="font-weight: bold; color: var(--accent-orange);">₹433</p>
+        <a href="https://www.flipkart.com/jaher-vahivat-2024-public-administration-gpsc-upsc-gujarati/p/itmbbe9493de8764">
+        <button class="buy-btn">Buy Now</button>
+        </a>
+    </div>
+    <div class="book-card">
+        <div class="book-img"><img src="book35.jpg" alt="Book"></div>
+        <h4>GPSC </h4>
+        <p style="font-weight: bold; color: var(--accent-orange);">₹299</p>
+        <a href="https://www.amazon.in/Liberty-Mamlatdar-Deputy-Section-Officer/dp/8195817009">
+        <button class="buy-btn">Buy Now</button>
+        </a>
+    </div>
+</div>
+<div class="book-grid">
+    <div class="book-card">
+        <div class="book-img"><img src="book36.webp" alt="Book"></div>
+        <h4>
+ભારતીય-અર્થતંત્ર</h4>
+        <p style="font-weight: bold; color: var(--accent-orange);">₹550</p>
+        <a href="https://gvbooks.in/product/bharatiya-arthatantra-yuva-upnishad/">
+        <button class="buy-btn">Buy Now</button>
+        </a>
+    </div>
+    <div class="book-card">
+        <div class="book-img"><img src="book37.webp" alt="Book"></div>
+        <h4>GPSC</h4>
+        <p style="font-weight: bold; color: var(--accent-orange);">₹311</p>
+        <a href="https://www.flipkart.com/gpsc-paper-set-book-prelim/p/itm411626846830e">
+        <button class="buy-btn">Buy Now</button>
+        </a>
+    </div>
+    <div class="book-card">
+        <div class="book-img"><img src="book38.jpeg" alt="Book"></div>
+        <h4>ઇતિહાસ</h4>
+        <p style="font-weight: bold; color: var(--accent-orange);">₹299</p>
+        <a href="https://jalarambookstore.com/detail/2672/gpsc-upsc-maains-historiy-2025">
+        <button class="buy-btn">Buy Now</button>
+        </a>
+    </div>
+</div>
+<div style="text-align: center; padding: 50px;">
+    <a href="home.html" class="back-home-btn">
+        🏠 Back to Home
+    </a>
+</div>
+
+<script>
+    function openSyllabus() { document.getElementById("syllabusModal").style.display = "block"; }
+    function closeSyllabus() { document.getElementById("syllabusModal").style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("syllabusModal")) { closeSyllabus(); }
+    }
+</script>
+
+</body>
+</html>

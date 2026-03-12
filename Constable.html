@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gujarat Police Constable 2026</title>
+    <style>
+        :root {
+            --police-blue: #0a192f; /* Deep Navy Blue */
+            --accent-gold: #b89146; /* Premium Golden Khaki */
+            --light-bg: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #334155;
+        }
+
+        body { 
+            font-family: 'Poppins', 'Segoe UI', sans-serif; 
+            margin: 0; 
+            background: var(--light-bg); 
+            scroll-behavior: smooth; 
+            color: var(--text-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex; 
+            align-items: center; 
+            justify-content: space-around;
+            padding: 100px 10%; 
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            min-height: 60vh;
+        }
+        .hero-left { flex: 1; animation: fadeInLeft 1.2s ease-out; }
+        .hero-right { flex: 1; text-align: right; animation: fadeInRight 1.2s ease-out; }
+        .hero-right img { 
+            max-width: 450px; 
+            animation: float 4s ease-in-out infinite; 
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* --- INFO CARDS --- */
+        .info-cards {
+            display: grid; 
+            grid-template-columns: 1fr 1fr;
+            gap: 30px; 
+            max-width: 1000px; 
+            margin: -60px auto 60px;
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 10;
+        }
+        .card-item {
+            background: var(--white); 
+            padding: 30px; 
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-left: 8px solid var(--accent-gold);
+            transition: 0.4s;
+            animation: fadeInUp 1s ease-out both;
+        }
+        .card-item:hover { transform: scale(1.03); }
+        .card-item h3 { color: var(--police-blue); margin-top: 0; font-size: 1.5rem; }
+
+        /* --- SYLLABUS MODAL --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(10, 25, 47, 0.9); 
+            backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: white; 
+            margin: 5% auto; 
+            padding: 40px;
+            width: 70%; 
+            border-radius: 24px; 
+            max-height: 80vh; 
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlide 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+        @keyframes modalSlide { from { transform: translateY(-100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close { position: absolute; right: 25px; top: 20px; font-size: 35px; cursor: pointer; color: #64748b; }
+
+        /* --- TABLE --- */
+        table { width: 100%; border-collapse: collapse; margin-top: 25px; border-radius: 12px; overflow: hidden; }
+        th, td { padding: 18px; text-align: left; border-bottom: 1px solid #f1f5f9; }
+        th { background: var(--police-blue); color: white; text-transform: uppercase; letter-spacing: 1px; }
+        tr:hover { background: #f8fafc; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 15px 35px; border: none; border-radius: 12px;
+            cursor: pointer; font-weight: 700; transition: 0.4s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-blue { background: var(--police-blue); color: white; box-shadow: 0 10px 20px rgba(10, 25, 47, 0.2); }
+        .btn-blue:hover { background: var(--accent-gold); transform: translateY(-5px); box-shadow: 0 15px 25px rgba(184, 145, 70, 0.3); }
+
+        /* --- BOOKS SECTION (Keeping original book colors) --- */
+        .books-container { padding: 80px 5%; background-color: #f1f5f9; text-align: center; }
+        .section-title { color: var(--police-blue); font-size: 2.5rem; margin-bottom: 50px; }
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 0 auto;
+        }
+        .book-card {
+            background: white; border-radius: 18px; overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.4s;
+            display: flex; flex-direction: column;
+        }
+        .book-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .book-img { background: #fff; padding: 20px; height: 260px; display: flex; align-items: center; justify-content: center; }
+        .book-img img { max-height: 100%; transition: 0.5s; }
+        .book-info { padding: 25px; text-align: left; }
+        .buy-btn {
+            width: 100%; padding: 12px; background: #C3B091; /* Keeping your khaki */
+            color: #fff; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .buy-btn:hover { background: var(--police-blue); }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 50px; }
+            .info-cards { grid-template-columns: 1fr; margin-top: 20px; }
+            .hero-right { order: -1; margin-bottom: 30px; }
+            .modal-content { width: 90%; padding: 20px; }
+        }
+         .back-home-btn {
+    padding: 15px 40px; 
+    background: var(--cce-purple); 
+    color:black; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s; /* માઉસ લઈ જતી વખતે સ્મૂધ લાગે તે માટે */
+}
+
+/* જ્યારે માઉસ બટન પર જશે ત્યારે જ આ થશે */
+.back-home-btn:hover {
+    background: var(--cce-gold); /* કલર બદલાઈને ગોલ્ડ થશે */
+    transform: translateY(-3px); /* બટન સહેજ ઉપર જશે */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* હળવો પડછાયો આવશે */
+}
+.hero-right img { 
+    max-width: 250px; /* અહીં 450px હતું, તેને ઘટાડીને 250px કર્યું છે */
+    animation: float 4s ease-in-out infinite; 
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+    /* ... બીજા કોડ ... */
+
+    .hero-right img { 
+        max-width: 250px; /* આ વેલ્યુ બદલવાથી ઈમેજ નાની થશે */
+        animation: float 4s ease-in-out infinite; 
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+    }
+
+    /* ... બાકીનો કોડ ... */
+</style>
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-left">
+        <h1 style="font-size: 50px; color: var(--police-blue); line-height: 1.2;">Gujarat Police <br><span style="color: var(--accent-gold);">Constable 2026</span></h1>
+        <p style="font-size: 1.1rem; margin-bottom: 30px;">LRD ભરતી માટેનો સંપૂર્ણ સિલેબસ અને શ્રેષ્ઠ પુસ્તકોની માહિતી.</p>
+        <button class="btn btn-blue" onclick="openSyllabus()">📋 View Full Syllabus</button>
+    </div>
+    <div class="hero-right">
+        <img src="img3.png" alt="Police Constable">
+    </div>
+</section>
+
+<div class="info-cards">
+    <div class="card-item" style="animation-delay: 0.2s;">
+        <h3>📊 Total Vacancies</h3>
+        <p><strong>બહાર પડેલ જગ્યાઓ:</strong> 12,000+ (અંદાજિત)</p>
+        <p>LRD, SRPF અને જેલ સિપાહી કેડર માટે નવી ભરતી.</p>
+    </div>
+    <div class="card-item" style="animation-delay: 0.4s;">
+        <h3>⏳ Age & Eligibility</h3>
+        <p><strong>વય મર્યાદા:</strong> 18 થી 33 વર્ષ</p>
+        <p><strong>લાયકાત:</strong> ધોરણ 12 પાસ (HSC) અથવા સમકક્ષ.</p>
+    </div>
+</div>
+
+<div id="syllabusModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSyllabus()">&times;</span>
+        <h2 style="color: var(--police-blue); border-bottom: 3px solid var(--accent-gold); display: inline-block;">Police Constable Full Syllabus</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>વિષય (Subject)</th>
+                    <th>મુખ્ય ટોપિક્સ (Topics)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>ગણિત (Maths)</td><td>ટકાવારી, નફો-ખોટ, સરાસરી, વ્યાજ, સમય અને કાર્ય</td></tr>
+                <tr><td>રીઝનીંગ (Reasoning)</td><td>લોહીના સબંધો, કોડિંગ-ડીકોડિંગ, શ્રેણી, દિશા અને અંતર</td></tr>
+                <tr><td>બંધારણ (Constitution)</td><td>આમુખ, મૂળભૂત અધિકારો, રાષ્ટ્રપતિ, પંચાયતી રાજ</td></tr>
+                <tr><td>ગુજરાતનો ઇતિહાસ</td><td>સોલંકી યુગ, મૈત્રક કાળ, આઝાદીની લડત માં ગુજરાત</td></tr>
+            </tbody>
+        </table>
+        <br>
+        <button class="btn btn-blue" onclick="closeSyllabus()">Close Window</button>
+    </div>
+</div>
+
+<section class="books-container">
+    <h2 class="section-title">📚 Best Preparation Books</h2>
+    <div class="book-grid">
+        <div class="book-card">
+            <div class="book-img"><img src="book18.jpg" alt="GK"></div>
+            <div class="book-info">
+                <h4>₹1099</h4>
+                <h4>⭐⭐⭐</h4>
+                <p><strong>ગુજરાત પોલીસ કોન્સ્ટેબલ</strong></p>
+                <a href="https://www.amazon.in/TOPPERSNOTES-Gujarat-Police-Constable-Gujarati/dp/B09Y1DKQZR">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-img"><img src="book19.jpeg" alt="Maths"></div>
+            <div class="book-info">
+                <!-- <h4>Rakesh Yadav Maths</h4> -->
+                 <h4>₹150</h4>
+                <h4>⭐⭐⭐</h4>
+            <p><strong>પેપર સેટ</strong></p>
+                <a href="https://jalarambookstore.com/detail/3107/police-constable-20-pepar-2026?srsltid=AfmBOoqem0Vr1246Rummj4gk-AA_fZFfrTJKdPoJ8eVxnJmPhFDquqSr">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-img"><img src="book20.webp" alt="Reasoning"></div>
+            <div class="book-info">
+               <h4>₹165</h4>
+                <h4>⭐⭐⭐</h4>
+                <p><strong>ઇતિહાસ</strong></p>
+                <a href="https://chopdiwala.com/shop/ncert-itihas-websankul/">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="books-container">
+    
+    <div class="book-grid">
+        <div class="book-card">
+            <div class="book-img"><img src="book21.jpg" alt="GK"></div>
+            <div class="book-info">
+                <h4>₹299</h4>
+                <h4>⭐⭐⭐</h4>
+                <p> <strong>પોલીસ કોન્સ્ટેબલ</strong></p>
+                <a href="https://www.amazon.in/Reasoning-WebSankul-Publication/dp/B0B9JYJ2FR">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-img"><img src="book22.jpg" alt="Maths"></div>
+            <div class="book-info">
+              <h4>₹520</h4>
+                <h4>⭐⭐⭐</h4>
+                <p><strong>રીઝનીંગ (Reasoning)</strong></p>
+                <a href="https://www.narodabook.com/police-constable-book-kiswa-career-academy-2025/?srsltid=AfmBOopPmqa16cf0whS6z6g5JKPNXaZH3uk7oyeYDHFsXitqFIkgqcUb">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-img"><img src="book23.png" alt="Reasoning"></div>
+            <div class="book-info">
+                <h4>₹135</h4>
+                <h4>⭐⭐⭐</h4>
+                <p><strong>વિજ્ઞાન અને ટેકનોલોજી (NCERT)</strong></p>
+                <a href="https://iasbookstall.in/product/vigyan-ane-technology-ncert-yuva-upnishad/">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="text-align: center; padding: 50px;">
+    <a href="home.html" class="back-home-btn">
+        🏠 Back to Home
+    </a>
+</div>
+
+<script>
+    function openSyllabus() { document.getElementById("syllabusModal").style.display = "block"; }
+    function closeSyllabus() { document.getElementById("syllabusModal").style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("syllabusModal")) { closeSyllabus(); }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Recruitment 2026 - Gujarat</title>
+    <style>
+        :root {
+            --rail-blue: #003399; /* Standard Railway Blue */
+            --rail-yellow: #ffcc00; /* Railway Safety Yellow */
+            --accent-red: #d32f2f;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+        }
+
+        body { 
+            font-family: 'Poppins', 'Segoe UI', sans-serif; 
+            margin: 0; 
+            background: var(--light-bg); 
+            scroll-behavior: smooth; 
+            color: var(--text-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex; 
+            align-items: center; 
+            justify-content: space-around;
+            padding: 100px 10%; 
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            min-height: 60vh;
+        }
+        .hero-left { flex: 1; animation: fadeInLeft 1.2s ease-out; }
+        .hero-right { flex: 1; text-align: right; animation: fadeInRight 1.2s ease-out; }
+        .hero-right img { 
+            max-width: 450px; 
+            animation: float 4s ease-in-out infinite; 
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* --- INFO CARDS --- */
+        .info-cards {
+            display: grid; 
+            grid-template-columns: 1fr 1fr;
+            gap: 30px; 
+            max-width: 1000px; 
+            margin: -60px auto 60px;
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 10;
+        }
+        .card-item {
+            background: var(--white); 
+            padding: 30px; 
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-left: 8px solid var(--rail-blue);
+            transition: 0.4s;
+            animation: fadeInUp 1s ease-out both;
+        }
+        .card-item:hover { transform: scale(1.03); }
+        .card-item h3 { color: var(--rail-blue); margin-top: 0; font-size: 1.5rem; }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: white; 
+            backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: white; 
+            margin: 5% auto; 
+            padding: 40px;
+            width: 70%; 
+            border-radius: 24px; 
+            max-height: 80vh; 
+            overflow-y: auto;
+            animation: modalSlide 0.5s ease;
+        }
+        @keyframes modalSlide { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close { float: right; font-size: 35px; cursor: pointer; color: var(--accent-red); }
+
+        /* --- TABLE --- */
+        table { width: 100%; border-collapse: collapse; margin-top: 25px; }
+        th, td { padding: 18px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: var(--rail-blue); color: white; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 15px 35px; border: none; border-radius: 12px;
+            cursor: pointer; font-weight: 700; transition: 0.4s;
+            text-transform: uppercase;
+        }
+        .btn-blue { background: var(--rail-blue); color: white; }
+        .btn-blue:hover { background: var(--rail-yellow); color: var(--rail-blue); transform: translateY(-5px); }
+
+        /* --- BOOKS SECTION --- */
+        .books-container { padding: 80px 5%; background-color: #f1f5f9; text-align: center; }
+        .section-title { color: var(--rail-blue); font-size: 2.5rem; margin-bottom: 50px; }
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 0 auto;
+        }
+        .book-card {
+            background: white; border-radius: 18px; overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.4s;
+            display: flex; flex-direction: column;
+        }
+        .book-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .book-img { background: #fff; padding: 20px; height: 260px; display: flex; align-items: center; justify-content: center; }
+        .book-img img { max-height: 100%; }
+        .book-info { padding: 25px; text-align: left; }
+        .buy-btn {
+            width: 100%; padding: 12px; background: var(--rail-yellow); 
+            color: var(--rail-blue); border: none; border-radius: 10px; font-weight: bold; cursor: pointer;
+        }
+        .buy-btn:hover { background: var(--rail-blue); color: white; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            .info-cards { grid-template-columns: 1fr; }
+            .hero-right { order: -1; margin-bottom: 30px; }
+        }
+        .subject-icon {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        margin-right: 12px;
+        border-radius: 5px;
+    }
+    .subject-cell {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+    }
+    .back-home-btn {
+    padding: 15px 40px; 
+    background: var(--cce-purple); 
+    color: black; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s; /* માઉસ લઈ જતી વખતે સ્મૂધ લાગે તે માટે */
+}
+
+/* જ્યારે માઉસ બટન પર જશે ત્યારે જ આ થશે */
+.back-home-btn:hover {
+    background: var(--cce-gold); /* કલર બદલાઈને ગોલ્ડ થશે */
+    transform: translateY(-3px); /* બટન સહેજ ઉપર જશે */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* હળવો પડછાયો આવશે */
+}
+    .hero-right img { 
+    max-width: 250px; /* અહીં 450px હતું, તેને ઘટાડીને 250px કર્યું છે */
+    animation: float 4s ease-in-out infinite; 
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+    /* ... બીજા કોડ ... */
+
+    .hero-right img { 
+        max-width: 250px; /* આ વેલ્યુ બદલવાથી ઈમેજ નાની થશે */
+        animation: float 4s ease-in-out infinite; 
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+    }
+
+    /* ... બાકીનો કોડ ... */
+</style>
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-left">
+        <h1 style="font-size: 50px; color: var(--rail-blue); line-height: 1.2;">Indian Railways <br><span style="color: var(--accent-red);">RRB Recruitment 2026</span></h1>
+        <p style="font-size: 1.1rem; margin-bottom: 30px;">રેલવેમાં NTPC, ગ્રુપ-ડી અને ટેકનિશિયન ભરતી માટેની વિગતો.</p>
+        <button class="btn btn-blue" onclick="openSyllabus()">📋 View RRB Syllabus</button>
+    </div>
+    <div class="hero-right">
+        <img src="https://cdn-icons-png.flaticon.com/512/821/821360.png" alt="Railway Icon">
+    </div>
+</section>
+
+<div class="info-cards">
+    <div class="card-item" style="animation-delay: 0.2s;">
+        <h3>🚆 Vacancy Types</h3>
+        <p><strong>પોસ્ટ:</strong> NTPC, Group D, ALP & Technician</p>
+        <p>ભારતીય રેલવેમાં ૧ લાખથી વધુ જગ્યાઓ પર ભરતીનું આયોજન.</p>
+    </div>
+    <div class="card-item" style="animation-delay: 0.4s;">
+        <h3>⏳ Eligibility</h3>
+        <p><strong>લાયકાત:</strong> 10th, 12th, ITI અથવા Degree</p>
+        <p><strong>વય મર્યાદા:</strong> 18 થી 33 વર્ષ (છૂટછાટ લાગુ).</p>
+    </div>
+</div>
+
+<div id="syllabusModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSyllabus()">&times;</span>
+        <h2 style="color: var(--rail-blue); border-bottom: 3px solid var(--rail-yellow); display: inline-block;">RRB Exam Syllabus</h2>
+        
+<table>
+    <thead>
+        <tr>
+            <th>વિષય (Subject)</th>
+            <th>મુખ્ય ટોપિક્સ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="subject-cell">
+                <img src="https://cdn-icons-png.flaticon.com/512/2950/2950645.png" class="subject-icon" alt="GK">
+                General Awareness
+            </td>
+            <td>Current Affairs, History, Geography</td>
+        </tr>
+        <tr>
+            <td class="subject-cell">
+                <img src="https://cdn-icons-png.flaticon.com/512/1739/1739431.png" class="subject-icon" alt="Maths">
+                Mathematics
+            </td>
+            <td>Arithmetic, Algebra, Geometry</td>
+        </tr>
+        <tr>
+            <td class="subject-cell">
+                <img src="https://cdn-icons-png.flaticon.com/512/3011/3011218.png" class="subject-icon" alt="Reasoning">
+                General Intelligence
+            </td>
+            <td>Reasoning, Coding-Decoding</td>
+        </tr>
+        <tr>
+            <td class="subject-cell">
+                <img src="https://cdn-icons-png.flaticon.com/512/2821/2821735.png" class="subject-icon" alt="Science">
+                General Science
+            </td>
+            <td>Physics, Chemistry, Life Sciences (10th Std)</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+        <br>
+        <button class="btn btn-blue" onclick="closeSyllabus()">Close Window</button>
+    </div>
+</div>
+
+<section class="books-container">
+    <h2 class="section-title">📚 Recommended RRB Preparation Books</h2>
+    <div class="book-grid">
+        <div class="book-card">
+            <div class="book-img"><img src="book27.jpg" alt="RRB Maths"></div>
+            <div class="book-info">
+                <h4>₹405</h4>
+                <h4>⭐⭐⭐⭐</h4>
+                <p><strong>RRB Group D</strong></p>
+                <a href="https://www.amazon.in/RRB-Group-Gujarati-Medium-Book/dp/B08128MGXS">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-img"><img src="book28.jpg" alt="RRB Science"></div>
+            <div class="book-info">
+                <h4>₹350</h4>
+                <h4>⭐⭐⭐⭐⭐</h4>
+                <p><strong>
+RAILWAY GROUP - D</strong> </p>
+                <a href="https://www.amazon.in/RAILWAY-GROUP-GUJARATI-LIBERTY-PUB/dp/B07B2WQRNY">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-img"><img src="book29.jpeg" alt="RRB GK"></div>
+            <div class="book-info">
+                <h4>₹297</h4>
+                <h4>⭐⭐⭐⭐</h4>
+                <p><strong>Rrb-group</strong></p>
+                <a href="https://jalarambookstore.com/detail/2614/rrb-group-d-leveel-1-2025?srsltid=AfmBOoqFqkrJo8UIvmZ26b0DQAbNJvAjvimSnXdceltzjTaHfD68s5gS">
+                <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="text-align: center; padding: 50px;">
+    <a href="home.html" class="back-home-btn">
+        🏠 Back to Home
+    </a>
+</div>
+
+<script>
+    function openSyllabus() { document.getElementById("syllabusModal").style.display = "block"; }
+    function closeSyllabus() { document.getElementById("syllabusModal").style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("syllabusModal")) { closeSyllabus(); }
+    }
+</script>
+
+</body>
+</html>

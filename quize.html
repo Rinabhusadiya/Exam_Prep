@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamPrep - Full Question Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #f4f6f9; color: #333; }
+        .title { text-align: center; margin-top: 30px; font-weight: bold; }
+        .subject-box { text-align: center; margin: 20px 0; }
+        .subject-btn { background: #00bcd4; color: white; padding: 10px 20px; border-radius: 30px; margin: 5px; border: none; transition: 0.3s; cursor: pointer; }
+        .subject-btn:hover { background: #0097a7; transform: scale(1.05); }
+        .quiz-card { background: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); cursor: pointer; height: 100%; border: 1px solid #eee; }
+        .quiz-card:hover { border-color: #00bcd4; }
+        .quiz-container { max-width: 800px; margin: 30px auto; display: none; background: white; padding: 30px; border-radius: 15px; border: 2px solid #00bcd4; }
+        .option { background: #f8f9fa; padding: 12px; margin: 8px 0; border-radius: 8px; cursor: pointer; border: 1px solid #ddd; }
+        .correct { background: #4CAF50 !important; color: white; }
+        .wrong { background: #f44336 !important; color: white; }
+        footer { background: #0f172a; color: white; padding: 20px; text-align: center; margin-top: 50px; }
+        /* Navbar Custom Styling */
+.navbar-nav .nav-link:hover {
+    color: #00bcd4 !important;
+    transition: 0.3s;
+}
+
+/* Footer Custom Styling */
+.footer-section {
+    background: #0f172a;
+    color: white;
+    padding: 60px 0 20px 0;
+    margin-top: 60px;
+}
+
+.footer-logo {
+    color: #22c55e;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #334155;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-text {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-link {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    color: #22c55e;
+    padding-left: 8px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #334155;
+    margin-top: 40px;
+    padding-top: 20px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    filter: grayscale(1);
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    filter: grayscale(0);
+}
+/* Hero Section Styling */
+.hero-section {
+    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+    padding: 80px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.hero-img {
+    max-width: 320px;
+    height: auto;
+    /* Soft shadow for depth */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+}
+
+.hero-text h2 {
+    color: #0f172a;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* Floating Animation */
+@keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0px); }
+}
+
+.animated-bulb {
+    animation: floatAnimation 4s ease-in-out infinite;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 40px 0;
+        text-align: center;
+    }
+    .hero-text h2 {
+        font-size: 2.2rem;
+    }
+    .hero-img {
+        max-width: 220px;
+        margin-bottom: 30px;
+    }
+}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-info fs-3" href="#">ExamPrep</a>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#examNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="examNavbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link px-3 fw-semibold" href="home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-3 fw-semibold" href="exam.html">Exam Pattern</a></li>
+                <li class="nav-item"><a class="nav-link px-3 fw-semibold active text-info" href="book.html">Books</a></li>
+                <li class="nav-item"><a class="nav-link px-3 fw-semibold" href="quize.html">Quiz</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <img src="img.jpg" alt="Quiz Icon" class="hero-img animated-bulb">
+            </div>
+            <div class="col-md-6 hero-text">
+                <h2 class="fw-bold">Level Up Your Preparation!</h2>
+                <p>Master your exams with **ExamPrep**. Get access to high-quality study materials, advanced level quizzes, and expert-recommended books all in one place.</p>
+                <!-- <div class="hero-buttons">
+                    <button class="btn btn-info text-white px-4 py-2 rounded-pill fw-bold shadow me-2">Explore Books</button>
+                    <button class="btn btn-outline-info px-4 py-2 rounded-pill fw-bold">Start Quiz</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+    <h2 class="title">MCQ Practice Zone</h2>
+
+    <div class="subject-box">
+        <button class="subject-btn" onclick="startQuiz('bharat')">ભારત (20 MCQ)</button>
+        <button class="subject-btn" onclick="startQuiz('gujarat')">ગુજરાત (20 MCQ)</button>
+        <button class="subject-btn" onclick="startQuiz('reasoning')">રીઝનીંગ (20 MCQ)</button>
+        <button class="subject-btn" onclick="startQuiz('badharan')">બંધારણ (20 MCQ)</button>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col"><div class="quiz-card" onclick="startQuiz('maths')"><h3>📐 Maths</h3><p> High Level</p></div></div>
+            <div class="col"><div class="quiz-card" onclick="startQuiz('english')"><h3>🔤 English</h3><p> High Level</p></div></div>
+            <div class="col"><div class="quiz-card" onclick="startQuiz('current')"><h3>📰 Current</h3><p> High Level</p></div></div>
+        </div>
+    </div>
+
+    <div class="quiz-container" id="quizDisplay">
+        <div class="d-flex justify-content-between"><h5 id="quizTitle" class="text-info"></h5><span id="qCount" class="badge bg-secondary"></span></div>
+        <hr><h4 id="question" class="mb-4"></h4><div id="options"></div>
+        <button class="btn btn-info text-white mt-4 w-100" id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+        <div id="resultArea" class="text-center mt-4" style="display:none;">
+            <h2 id="finalScore"></h2><button class="btn btn-dark mt-2" onclick="closeQuiz()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const quizzes = {
+            bharat: [
+                {q:"ભારતનું રાષ્ટ્રીય ફૂલ કયું છે?", o:["ગુલાબ","કમળ","સૂર્યમુખી","ગલગોટો"], a:1},
+                {q:"ભારતની સૌથી લાંબી નદી કઈ છે?", o:["યમુના","બ્રહ્મપુત્રા","ગંગા","નર્મદા"], a:2},
+                {q:"ભારતના લોખંડી પુરુષ કોણ છે?", o:["ગાંધીજી","નેહરુ","સરદાર પટેલ","આંબેડકર"], a:2},
+                {q:"ક્ષેત્રફળની દ્રષ્ટિએ ભારતનું સૌથી મોટું રાજ્ય?", o:["ગુજરાત","યુપી","રાજસ્થાન","મહારાષ્ટ્ર"], a:2},
+                {q:"ભારત ક્યારે આઝાદ થયું?", o:["1942","1947","1950","1930"], a:1},
+                {q:"ભારતના પ્રથમ વડાપ્રધાન કોણ હતા?", o:["શાસ્ત્રીજી","નહેરુ","ઇન્દિરા ગાંધી","પટેલ"], a:1},
+                {q:"ગેટવે ઓફ ઇન્ડિયા ક્યાં આવેલું છે?", o:["દિલ્હી","મુંબઈ","કોલકાતા","ચેન્નાઈ"], a:1},
+                {q:"કયા શહેરને 'પિંક સિટી' કહેવાય છે?", o:["ઉદયપુર","જોધપુર","જયપુર","અમદાવાદ"], a:2},
+                {q:"કયા રાજ્યમાં સૌથી વધુ જંગલો છે?", o:["કેરળ","મધ્યપ્રદેશ","આસામ","કર્ણાટક"], a:1},
+                {q:"ભારતનું રાષ્ટ્રીય પ્રાણી કયું છે?", o:["સિંહ","વાઘ","હાથી","ચિત્તો"], a:1},
+                {q:"તાજમહેલ કઈ નદીના કિનારે છે?", o:["ગંગા","યમુના","સરસ્વતી","નર્મદા"], a:1},
+                {q:"ભારતના પ્રથમ મહિલા રાષ્ટ્રપતિ કોણ?", o:["પ્રતિભા પાટીલ","દ્રૌપદી મુર્મુ","ઇન્દિરા ગાંધી","સરોજિની નાયડુ"], a:0},
+                {q:"ભારતનો સૌથી ઊંચો પર્વત કયો છે?", o:["હિમાલય","કાંચનજંગા","ગોડવિન ઓસ્ટિન","માઉન્ટ એવરેસ્ટ"], a:2},
+                {q:"ભારતનું રાષ્ટ્રીય ગીત (National Song) કયું?", o:["જન ગણ મન","વંદે માતરમ","સારે જહાં સે અચ્છા","મા તુઝે સલામ"], a:1},
+                {q:"સૂર્યમંદિર ક્યાં આવેલું છે?", o:["કોણાર્ક","દ્વારકા","સોમનાથ","મથુરા"], a:0},
+                {q:"ચિપકો આંદોલન શેના માટે હતું?", o:["પાણી","પર્યાવરણ/વૃક્ષ","જમીન","શિક્ષણ"], a:1},
+                {q:"સૌથી વધુ વસ્તી ધરાવતું રાજ્ય કયું?", o:["યુપી","મહારાષ્ટ્ર","બિહાર","બંગાળ"], a:0},
+                {q:"ભારતમાં રેલવેની શરૂઆત ક્યારે થઈ?", o:["1850","1853","1901","1947"], a:1},
+                {q:"સિંધુ ખીણની સભ્યતાનું બંદર કયું હતું?", o:["ધોળાવીરા","લોથલ","રંગપુર","રોઝડી"], a:1},
+                {q:"ભારતની રાષ્ટ્રીય રમત કઈ છે?", o:["ક્રિકેટ","હોકી","કબડ્ડી","ફૂટબોલ"], a:1},
+                // --- ઇતિહાસ અને સાંસ્કૃતિક વારસો (History & Culture) ---
+    {q: "ગાંધી-ઇરવિન કરાર કયા વર્ષે કરવામાં આવ્યા હતા?", o: ["1930", "1931", "1932", "1929"], a: 1},
+    {q: "કયા મૌર્ય શાસકે જૈન ધર્મ અંગીકાર કરી શ્રવણબેલગોડામાં દેહત્યાગ કર્યો હતો?", o: ["અશોક", "બિંદુસાર", "ચંદ્રગુપ્ત મૌર્ય", "દશરથ"], a: 2},
+    {q: "ભારતની કઈ ગુફાઓમાં હિન્દુ, જૈન અને બૌદ્ધ ત્રણેય ધર્મોનું સંગમ જોવા મળે છે?", o: ["અજંટા", "ઈલોરા", "એલિફન્ટા", "કાર્લા"], a: 1},
+    {q: "પ્રસિદ્ધ 'ત્રિભંગા' મુદ્રા કયા શાસ્ત્રીય નૃત્ય સાથે જોડાયેલી છે?", o: ["ભરતનાટ્યમ", "કથક", "ઓડિસી", "કુચિપુડી"], a: 2},
+    {q: "લોથલ કઈ નદીના કિનારે આવેલું હતું?", o: ["નર્મદા", "ભોગાવો", "સાબરમતી", "સરસ્વતી"], a: 1},
+
+    // --- ભૂગોળ અને પર્યાવરણ (Geography & Environment) ---
+    {q: "ભારતનો સૌથી ઊંચો ધોધ 'જોગનો ધોધ' કઈ નદી પર આવેલો છે?", o: ["નર્મદા", "શરાવતી", "કાવેરી", "કૃષ્ણા"], a: 1},
+    {q: "કયા પાસ (Pass) દ્વારા સતલજ નદી ભારતમાં પ્રવેશ કરે છે?", o: ["નાથુ લા", "ઝોજી લા", "શિપકી લા", "લિપુલેખ"], a: 2},
+    {q: "ભારતમાં કયા પ્રકારના જંગલોનું પ્રમાણ સૌથી વધુ છે?", o: ["ઉષ્ણકટિબંધીય સદાબહાર", "ઉષ્ણકટિબંધીય ખરાઉ", "મેન્ગ્રોવ", "પર્વતીય"], a: 1},
+    {q: "કયા રાજ્યમાં 'લોકતક સરોવર' (તરતું સરોવર) આવેલું છે?", o: ["સિક્કિમ", "મણિપુર", "મેઘાલય", "મિઝોરમ"], a: 1},
+    {q: "નીચેનામાંથી કઈ નદી 'પશ્ચિમ તરફ' વહેતી નદી છે?", o: ["મહા નદી", "ગોદાવરી", "તાપી", "કૃષ્ણા"], a: 2},
+
+    // --- અર્થતંત્ર અને વિજ્ઞાન (Economics & Science) ---
+    {q: "ભારતમાં 'બ્લુ રિવોલ્યુશન' (નીલ ક્રાંતિ) શેના ઉત્પાદન સાથે જોડાયેલ છે?", o: ["દૂધ", "કઠોળ", "મત્સ્ય", "ખાતર"], a: 2},
+    {q: "ભારતનું પ્રથમ ન્યુક્લિયર રિએક્ટર કયું હતું?", o: ["અપ્સરા", "રોહિણી", "ભાભા", "ધ્રુવ"], a: 0},
+    {q: "જીએસટી (GST) ભારતમાં કઈ તારીખથી અમલમાં આવ્યો?", o: ["1 એપ્રિલ 2017", "1 જુલાઈ 2017", "15 ઓગસ્ટ 2017", "1 જાન્યુઆરી 2018"], a: 1},
+    {q: "ઈસરો (ISRO) નું હેડક્વાર્ટર ક્યાં આવેલું છે?", o: ["શ્રીહરિકોટા", "થિરુવનંતપુરમ", "બેંગલુરુ", "નવી દિલ્હી"], a: 2},
+    {q: "ભારતની કઈ પંચવર્ષીય યોજના 'મહાલનોબિસ મોડેલ' પર આધારિત હતી?", o: ["પ્રથમ", "બીજી", "ત્રીજી", "ચોથી"], a: 1},
+
+    // --- બંધારણ અને વહીવટ (Constitution & Admin) ---
+    {q: "ભારતના નિયંત્રક અને મહાલેખા પરીક્ષક (CAG) ની નિમણૂક કયા અનુચ્છેદ હેઠળ થાય છે?", o: ["148", "110", "76", "124"], a: 0},
+    {q: "રાષ્ટ્રપતિ પર મહાભિયોગ (Impeachment) ચલાવવાની પ્રક્રિયા કઈ કલમમાં છે?", o: ["52", "61", "72", "123"], a: 1},
+    {q: "કયા કેસમાં સુપ્રીમ કોર્ટે 'બંધારણના મૂળભૂત માળખા' (Basic Structure) નો સિદ્ધાંત આપ્યો?", o: ["ગોલકનાથ કેસ", "કેશવાનંદ ભારતી કેસ", "મિનરવા મિલ્સ કેસ", "મેનકા ગાંધી કેસ"], a: 1},
+    {q: "ભારતમાં 'રાષ્ટ્રીય મતદાતા દિવસ' ક્યારે ઉજવાય છે?", o: ["25 જાન્યુઆરી", "26 જાન્યુઆરી", "10 ડિસેમ્બર", "15 ઓગસ્ટ"], a: 0},
+    {q: "પંચાયતી રાજ સંસ્થાઓમાં મહિલાઓ માટે કેટલી અનામતની જોગવાઈ છે?", o: ["25%", "33%", "50%", "10%"], a: 1}
+            ],
+            gujarat: [
+                {q:"ગુજરાતની સ્થાપના ક્યારે થઈ?", o:["1 મે 1960","15 ઓગસ્ટ 1947","26 જાન્યુઆરી 1950","1 મે 1965"], a:0},
+                {q:"ગુજરાતનું પાટનગર કયું છે?", o:["અમદાવાદ","વડોદરા","રાજકોટ","ગાંધીનગર"], a:3},
+                {q:"ગુજરાતનો સૌથી લાંબો દરિયાકિનારો કેટલો છે?", o:["1600 km","1200 km","1500 km","1000 km"], a:0},
+                {q:"એશિયાઈ સિંહ ક્યાં જોવા મળે છે?", o:["બરડા","ગીર","કચ્છ","વેળાવદર"], a:1},
+                {q:"નર્મદા નદીનું ઉદ્ગમ સ્થાન કયું?", o:["હિમાલય","અમરકંટક","અરવલ્લી","સાતપુડા"], a:1},
+                {q:"ગુજરાતનું સૌથી મોટું બંદર કયું?", o:["ઓખા","દહેજ","કંડલા","મુન્દ્રા"], a:2},
+                {q:"સાપુતારા કઈ પર્વતમાળામાં છે?", o:["અરવલ્લી","સહ્યાદ્રી","વિંધ્યાચલ","સાતપુડા"], a:1},
+                {q:"ગુજરાતની સૌથી મોટી હોસ્પિટલ?", o:["સિવિલ","ઝાયડસ","અપોલો","શિલ્બી"], a:0},
+                {q:"કયા શહેરને 'સાક્ષર નગરી' કહેવાય?", o:["વડોદરા","નડિયાદ","ભાવનગર","સુરત"], a:1},
+                {q:"અમૂલ ડેરી ક્યાં આવેલી છે?", o:["મહેસાણા","આણંદ","પાલનપુર","ગાંધીનગર"], a:1},
+                {q:"ગુજરાતનું રાજ્ય પક્ષી કયું?", o:["મોર","ફ્લેમિંગો (હંજ)","પોપટ","કબૂતર"], a:1},
+                {q:"સરદાર સરોવર ડેમ કઈ નદી પર છે?", o:["તાપી","નર્મદા","સાબરમતી","મહી"], a:1},
+                {q:"મોઢેરાનું સૂર્યમંદિર કોણે બનાવ્યું?", o:["સિદ્ધરાજ જયસિંહ","ભીમદેવ પ્રથમ","કુમારપાળ","મૂળરાજ"], a:1},
+                {q:"ગુજરાતમાં 'ડાયનાસોર પાર્ક' ક્યાં છે?", o:["અમદાવાદ","રૈયોલી (બાલાસિનોર)","કચ્છ","ગીર"], a:1},
+                {q:"કચ્છનો લિગ્નાઈટ પ્રોજેક્ટ ક્યાં છે?", o:["પાન્ધ્રો","મુન્દ્રા","માંડવી","ભુજ"], a:0},
+                {q:"સોમનાથ મંદિરના જીર્ણોદ્ધાર માટે કોણે ફાળો આપ્યો?", o:["ગાંધીજી","સરદાર પટેલ","મોદીજી","રાજવીઓ"], a:1},
+                {q:"તારંગા પર્વત કયા જિલ્લામાં છે?", o:["બનાસકાંઠા","મહેસાણા","સાબરકાંઠા","પાટણ"], a:1},
+                {q:"સત્યાગ્રહ આશ્રમ (સાબરમતી) ની સ્થાપના ક્યારે થઈ?", o:["1915","1917","1930","1942"], a:1},
+                {q:"ગુજરાતનું રાજ્ય ગીત કયું?", o:["વંદે માતરમ","જય જય ગરવી ગુજરાત","મા તુઝે સલામ","વૈષ્ણવ જન"], a:1},
+                {q:"ધોળાવીરા કયા જિલ્લામાં છે?", o:["રાજકોટ","કચ્છ","મોરબી","જામનગર"], a:1},
+                {q: "ગુજરાતમાં હડપ્પીય સંસ્કૃતિનું સૌથી મોટું નગર 'ધોળાવીરા' કયા ટાપુમાં આવેલું છે?", o: ["ખદીર બેટ", "પ Pachham બેટ", "બેલા બેટ", "નોખ બેટ"], a: 0},
+    {q: "મૈત્રક વંશના શાસન દરમિયાન કયા ચીની મુસાફરે વલ્લભી વિદ્યાપીઠની મુલાકાત લીધી હતી?", o: ["ફાહિયાન", "હ્યુ-એન-સાંગ", "ઈત્સિંગ", "મેગેસ્થનીઝ"], a: 1},
+    {q: "જૂનાગઢમાં આવેલો અશોકનો શિલાલેખ કઈ ભાષામાં કોતરાયેલો છે?", o: ["સંસ્કૃત", "પાલિ", "પ્રાકૃત", "બ્રાહ્મી"], a: 2},
+    {q: "ગુજરાતમાં 'સુદર્શન તળાવ' નું નિર્માણ ચંદ્રગુપ્ત મૌર્યના કયા સુબાએ કરાવ્યું હતું?", o: ["તુષારફ", "પુષ્પગુપ્ત", "પર્ણદત્ત", "ચક્રપાલિત"], a: 1},
+    {q: "સોલંકી વંશના કયા રાજાએ 'બાર્બરક' જિષ્ણુનું બિરુદ ધારણ કર્યું હતું?", o: ["મૂળરાજ સોલંકી", "કુમારપાળ", "સિદ્ધરાજ જયસિંહ", "ભીમદેવ બીજો"], a: 2},
+
+    // --- મધ્યકાલીન ગુજરાત (Medieval Gujarat) ---
+    {q: "અમદાવાદ શહેરની સ્થાપના અહમદશાહે કયા વર્ષમાં કરી હતી?", o: ["1411", "1415", "1511", "1311"], a: 0},
+    {q: "ગુજરાતના કયા સુલતાનને 'દરિયાઈ સુલતાન' અથવા 'મહમદ બેગડો' તરીકે ઓળખવામાં આવે છે?", o: ["મુઝફ્ફરશાહ", "અહમદશાહ", "મહમદશાહ", "નાસીરુદ્દીન મહમદશાહ"], a: 2},
+    {q: "પાટણની 'રાણકી વાવ' કયા વંશના શાસનકાળ દરમિયાન બની હતી?", o: ["ચાવડા વંશ", "વાઘેલા વંશ", "સોલંકી વંશ", "મૈત્રક વંશ"], a: 2},
+    {q: "કયા મરાઠા શાસકે ગુજરાતમાં ગાયકવાડ શાસનની સ્થાપના કરી હતી?", o: ["દામાજી ગાયકવાડ", "પિલાજીરાવ ગાયકવાડ", "સયાજીરાવ ગાયકવાડ", "ફતેહસિંહ"], a: 1},
+
+    // --- આધુનિક ગુજરાત અને સત્યાગ્રહો (Modern Gujarat) ---
+    {q: "ગાંધીજીએ 'દાંડી કૂચ' ની શરૂઆત કઈ તારીખે કરી હતી?", o: ["12 માર્ચ 1930", "6 એપ્રિલ 1930", "12 માર્ચ 1931", "30 જાન્યુઆરી 1930"], a: 0},
+    {q: "ખેડા સત્યાગ્રહ (1918) વખતે ગાંધીજીના મુખ્ય સહયોગી કોણ હતા?", o: ["ઝવેરચંદ મેઘાણી", "સરદાર વલ્લભભાઈ પટેલ", "રવિશંકર મહારાજ", "મોહનલાલ પંડ્યા"], a: 1},
+    {q: "મહાગુજરાત આંદોલનના પ્રણેતા અને જનતાના 'ચાચા' કોણ હતા?", o: ["ઈન્દુલાલ યાજ્ઞિક", "બ્રહ્મકુમાર ભટ્ટ", "રવિશંકર મહારાજ", "જીવરાજ મહેતા"], a: 0},
+    {q: "ગુજરાત રાજ્યના પ્રથમ મુખ્યમંત્રી કોણ હતા?", o: ["બળવંતરાય મહેતા", "હિતેન્દ્રભાઈ દેસાઈ", "ડો. જીવરાજ મહેતા", "ચીમનભાઈ પટેલ"], a: 2},
+    {q: "ભારતના 'બિસ્માર્ક' તરીકે ઓળખાતા સરદાર પટેલનો જન્મ ક્યાં થયો હતો?", o: ["કરમસદ", "નડિયાદ", "બારડોલી", "અમદાવાદ"], a: 1},
+
+    // --- સાંસ્કૃતિક ઇતિહાસ (Cultural History) ---
+    {q: "કયા સ્થળને 'સાક્ષર નગરી' તરીકે ઓળખવામાં આવે છે?", o: ["અમદાવાદ", "વડોદરા", "નડિયાદ", "ભાવનગર"], a: 2},
+    {q: "શ્યામજી કૃષ્ણ વર્માએ લંડનમાં કયા ભવનની સ્થાપના કરી હતી?", o: ["ગુજરાત હાઉસ", "ઇન્ડિયા હાઉસ", "સ્વરાજ હાઉસ", "આઝાદ ભવન"], a: 1},
+    {q: "નરસિંહ મહેતાનો જન્મ ક્યાં થયો હતો?", o: ["જૂનાગઢ", "ભાવનગર", "તળાજા", "માંગરોળ"], a: 2},
+    {q: "કયા સત્યાગ્રહને કારણે વલ્લભભાઈ પટેલને 'સરદાર'નું બિરુદ મળ્યું હતું?", o: ["ખેડા સત્યાગ્રહ", "બારડોલી સત્યાગ્રહ", "બોરસદ સત્યાગ્રહ", "ધરાસણા સત્યાગ્રહ"], a: 1}
+            ],
+            reasoning: [
+                {q:"A=1, B=2 હોય તો CAT=?", o:["20","24","26","28"], a:1},
+                {q:"2, 4, 8, 16, ?", o:["20","24","30","32"], a:3},
+                {q:"જો પુત્રના પિતા એ મારા પિતાના પુત્ર છે, તો હું કોણ?", o:["ભાઈ","પિતા","કાકા","પુત્ર"], a:1},
+                {q:"સવારમાં સૂર્ય તરફ મુખ રાખી ચાલતા તમારી ડાબી બાજુ કઈ દિશા હશે?", o:["પૂર્વ","પશ્ચિમ","ઉત્તર","દક્ષિણ"], a:2},
+                {q:"1, 4, 9, 16, ?", o:["20","25","30","36"], a:1},
+                {q:"ઘડિયાળમાં 3 વાગ્યે બે કાંટા વચ્ચે કેટલો ખૂણો હોય?", o:["45","90","120","180"], a:1},
+                {q:"વિષમ શબ્દ શોધો:", o:["ગાય","ભેંસ","બકરી","સિંહ"], a:3},
+                {q:"જાન્યુઆરી : 31 :: ફેબ્રુઆરી (લીપ વર્ષ) : ?", o:["28","29","30","31"], a:1},
+                {q:"ACE, GIK, ?", o:["LMO","MOQ","PQR","NPR"], a:1},
+                {q:"5, 10, 15, 20, ?", o:["22","25","30","35"], a:1}
+                // (વધુ 10 આ રીતે ઉમેરી શકાય)
+            ].concat(Array(10).fill({q:"Reasoning Practice Question", o:["A","B","C","D"], a:0})),
+            badharan: [
+                {q:"બંધારણ ક્યારે સ્વીકારવામાં આવ્યું?", o:["26 નવે 1949","26 જાન 1950","15 ઓગ 1947","30 જાન 1948"], a:0},
+                {q:"બંધારણના ઘડવૈયા કોણ ગણાય?", o:["પટેલ","નેહરુ","આંબેડકર","ગાંધીજી"], a:2},
+                {q:"રાજ્યપાલની નિમણૂક કોણ કરે?", o:["વડાપ્રધાન","રાષ્ટ્રપતિ","મુખ્યમંત્રી","હાઈકોર્ટ"], a:1},
+                {q:"બંધારણમાં કુલ કેટલી કલમો હતી (શરૂઆતમાં)?", o:["395","444","400","380"], a:0},
+                {q:"ભારત શું છે?", o:["સંધિય રાજ્ય","રાજ્યોનો સંઘ","એકાત્મક રાજ્ય","તાનાશાહી"], a:1},
+                {q:"કટોકટીની જોગવાઈ કયા દેશમાંથી લીધી?", o:["USA","જર્મની","રશિયા","બ્રિટન"], a:1},
+                {q:"મૂળભૂત હકો કયા ભાગમાં છે?", o:["ભાગ 2","ભાગ 3","ભાગ 4","ભાગ 1"], a:1},
+                {q:"બંધારણ સભાના કામચલાઉ અધ્યક્ષ?", o:["આંબેડકર","સચ્ચિદાનંદ સિન્હા","રાજેન્દ્ર પ્રસાદ","રાધાકૃષ્ણન"], a:1},
+                {q:"મત આપવાની ઉંમર 21 થી ઘટાડી 18 કયા સુધારા દ્વારા થઈ?", o:["42","44","61","73"], a:2},
+                {q:"બંધારણનો આત્મા કોને કહેવાય?", o:["આમુખ","હકો","ફરજો","માર્ગદર્શક સિદ્ધાંતો"], a:0},
+                {q: "ભારતનું બંધારણ ક્યારે અમલમાં આવ્યું?", o: ["26 નવેમ્બર 1949", "15 ઓગસ્ટ 1947", "26 જાન્યુઆરી 1950", "30 જાન્યુઆરી 1948"], a: 2},
+    {q: "બંધારણ સભાના કાયમી અધ્યક્ષ કોણ હતા?", o: ["ડો. આંબેડકર", "ડો. રાજેન્દ્ર પ્રસાદ", "સચ્ચિદાનંદ સિન્હા", "જવાહરલાલ નહેરુ"], a: 1},
+    {q: "બંધારણની મુસદ્દા સમિતિ (Drafting Committee) ના અધ્યક્ષ કોણ હતા?", o: ["સરદાર પટેલ", "ડો. આંબેડકર", "કે.એમ. મુન્શી", "મૌલાના આઝાદ"], a: 1},
+    {q: "ભારતીય બંધારણ ઘડવામાં કેટલો સમય લાગ્યો?", o: ["2 વર્ષ, 11 માસ, 18 દિવસ", "3 વર્ષ", "2 વર્ષ, 5 માસ", "1 વર્ષ, 11 માસ"], a: 0},
+    {q: "બંધારણનો આત્મા કોને કહેવામાં આવે છે?", o: ["મૂળભૂત હકો", "આમુખ", "માર્ગદર્શક સિદ્ધાંતો", "બંધારણીય ઈલાજોનો હક"], a: 1},
+    {q: "ભારતના બંધારણમાં મૂળભૂત હકો કયા દેશમાંથી લેવામાં આવ્યા છે?", o: ["બ્રિટન", "રશિયા", "અમેરિકા (USA)", "કેનેડા"], a: 2},
+    {q: "બંધારણની કઈ કલમ 'અસ્પૃશ્યતા નિવારણ' સાથે જોડાયેલી છે?", o: ["કલમ 14", "કલમ 15", "કલમ 17", "કલમ 18"], a: 2},
+    {q: "રાજ્યપાલની નિમણૂક કોણ કરે છે?", o: ["વડાપ્રધાન", "મુખ્યમંત્રી", "રાષ્ટ્રપતિ", "સુપ્રીમ કોર્ટ"], a: 2},
+    {q: "ભારતના પ્રથમ નાગરિક કોણ ગણાય છે?", o: ["વડાપ્રધાન", "રાષ્ટ્રપતિ", "મુખ્ય ન્યાયાધીશ", "લોકસભાના અધ્યક્ષ"], a: 1},
+    {q: "બંધારણમાં સુધારો કરવાની પ્રક્રિયા કઈ કલમ હેઠળ છે?", o: ["કલમ 370", "કલમ 360", "કલમ 368", "કલમ 356"], a: 2},
+    {q: "પંચાયતી રાજનો અમલ સૌપ્રથમ કયા રાજ્યમાં થયો હતો?", o: ["ગુજરાત", "રાજસ્થાન", "મહારાષ્ટ્ર", "બિહાર"], a: 1},
+    {q: "ગરીબી હટાવોનો નારો કઈ પંચવર્ષીય યોજનામાં આપવામાં આવ્યો હતો?", o: ["ત્રીજી", "ચોથી", "પાંચમી", "છઠ્ઠી"], a: 2},
+    {q: "લોકસભાના સભ્ય બનવા માટે લઘુત્તમ વય કેટલી હોવી જોઈએ?", o: ["18 વર્ષ", "21 વર્ષ", "25 વર્ષ", "30 વર્ષ"], a: 2},
+    {q: "રાજ્યસભાના સભ્યની મુદત કેટલા વર્ષની હોય છે?", o: ["5 વર્ષ", "6 વર્ષ", "2 વર્ષ", "કાયમી"], a: 1},
+    {q: "બંધારણીય ઈલાજોનો હક કઈ કલમમાં છે?", o: ["કલમ 19", "કલમ 21", "કલમ 32", "કલમ 44"], a: 2},
+    {q: "ભારતના મુખ્ય ન્યાયાધીશની નિમણૂક કોણ કરે છે?", o: ["સંસદ", "વડાપ્રધાન", "રાષ્ટ્રપતિ", "કાયદા મંત્રી"], a: 2},
+    {q: "નાણાકીય કટોકટી કઈ કલમ હેઠળ લાદી શકાય છે?", o: ["કલમ 352", "કલમ 356", "કલમ 360", "કલમ 370"], a: 2},
+    {q: "શિક્ષણનો હક કઈ કલમ હેઠળ મૂળભૂત હક બન્યો?", o: ["21-A", "19", "24", "45"], a: 0},
+    {q: "બંધારણ સભાની પ્રથમ બેઠક ક્યારે મળી હતી?", o: ["9 ડિસેમ્બર 1946", "15 ઓગસ્ટ 1947", "26 જાન્યુઆરી 1950", "2 ઓગસ્ટ 1946"], a: 0},
+    {q: "ભારતનું રાષ્ટ્રગીત સ્વીકારવાની તારીખ કઈ છે?", o: ["15 ઓગસ્ટ 1947", "24 જાન્યુઆરી 1950", "26 જાન્યુઆરી 1950", "26 નવેમ્બર 1949"], a: 1}
+                // (વધુ 10 આ રીતે ઉમેરી શકાય)
+            ].concat(Array(10).fill({q:"Constitution Practice Question", o:["A","B","C","D"], a:0})),
+            
+            maths: [
+                {q: "x + 1/x = 5, then x² + 1/x² = ?", o: ["23", "25", "27", "21"], a: 0},
+                {q: "ટ્રેન 72 km/h ઝડપે 200m પ્લેટફોર્મ 22 સેકન્ડમાં ઓળંગે તો ટ્રેનની લંબાઈ?", o: ["240m", "200m", "440m", "300m"], a: 0},
+                {q: "8000 નું 5% લેખે 2 વર્ષનું ચક્રવૃદ્ધિ વ્યાજ?", o: ["800", "820", "400", "840"], a: 1},
+                {q: "A 10 દિવસમાં, B 15 દિવસમાં કામ કરે, બંને સાથે કેટલામાં?", o: ["5", "8", "6", "7"], a: 2},
+                {q: "વર્તુળનો પરિધ 44 cm હોય તો ક્ષેત્રફળ કેટલું? (π=22/7)", o: ["154", "44", "616", "77"], a: 0},
+                {q: "0.003 × 0.02 = ?", o: ["0.0006", "0.00006", "0.06", "0.6"], a: 1},
+                {q: "પિતા-પુત્રની ઉંમરનો સરવાળો 50, 5 વર્ષ પહેલા પિતા 7 ગણા હતા. પિતાની હાલની ઉંમર?", o: ["35", "40", "45", "30"], a: 1},
+                {q: "log 2 + log 5 = ?", o: ["log 7", "0", "1", "10"], a: 2},
+                {q: "960 માં વેચતા 20% ખોટ ગઈ, મૂળ કિંમત?", o: ["1200", "1100", "1000", "1150"], a: 0},
+                {q: "સમાંતર શ્રેણી 2, 7, 12... નું 10 મું પદ?", o: ["45", "47", "50", "52"], a: 1}
+            ],
+            english: [
+                {q: "Select correct spelling:", o: ["Maintenance", "Maintenence", "Maintainance", "Mantenance"], a: 0},
+                {q: "He is ______ M.A. in Hindi.", o: ["a", "an", "the", "no"], a: 1},
+                {q: "Antonym of 'Fragile':", o: ["Weak", "Strong", "Soft", "Brittle"], a: 1},
+                {q: "Synonym of 'Abundant':", o: ["Rare", "Small", "Plenty", "Poor"], a: 2},
+                {q: "Neither he nor I ______ going.", o: ["is", "am", "are", "be"], a: 1},
+                {q: "Change Voice: 'Shut the door.'", o: ["Let door shut.", "Let the door be shut.", "Door is shut.", "Shutting door."], a: 1},
+                {q: "If I ______ a king, I would help you.", o: ["was", "were", "am", "be"], a: 1},
+                {q: "Death is preferable ______ dishonor.", o: ["than", "to", "by", "for"], a: 1},
+                {q: "One who hates women is called ______.", o: ["Misogynist", "Misanthrope", "Philanthropist", "Optimist"], a: 0},
+                {q: "Look! The baby ______.", o: ["cries", "is crying", "cried", "has cried"], a: 1}
+            ],
+            current: [
+                {q: "FIFA 2026 ક્યાં યોજાશે?", o: ["USA/CAN/MEX", "India", "Qatar", "Brazil"], a: 0},
+                {q: "હાલના CDS કોણ છે?", o: ["Anil Chauhan", "Manoj Pande", "Bipin Rawat", "R. Hari Kumar"], a: 0},
+                {q: "કયા રાજ્યે UCC બિલ પાસ કર્યું?", o: ["Gujarat", "Uttarakhand", "Goa", "UP"], a: 1},
+                {q: "ચંદ્રયાન-3 ક્યારે લેન્ડ થયું?", o: ["23 Aug 2023", "15 Aug 2023", "20 July 2023", "1 Sep 2023"], a: 0},
+                {q: "નીતિ આયોગના CEO?", o: ["BVR Subrahmanyam", "Suman Bery", "A. Kant", "Modi"], a: 0},
+                {q: "G20 2024 હોસ્ટ દેશ?", o: ["India", "Brazil", "South Africa", "USA"], a: 1},
+                {q: "IPL 2024 વિજેતા?", o: ["KKR", "SRH", "MI", "CSK"], a: 0},
+                {q: "ભારત રત્ન 2024 કુલ કેટલા?", o: ["2", "3", "5", "1"], a: 2},
+                {q: "ISRO ના ચેરમેન કોણ?", o: ["S. Somanath", "K. Sivan", "R. Madhavan", "Satish Dhawan"], a: 0},
+                {q: "ભારતની પ્રથમ સોલર સિટી?", o: ["Sanchi", "Modhera", "Surat", "Pune"], a: 0},
+                // --- ભારત અને આંતરરાષ્ટ્રીય (National & International) ---
+    {q: "વર્ષ 2026 માં 'ફિફા વર્લ્ડ કપ' (FIFA World Cup) કયા દેશોમાં યોજાનાર છે?", o: ["ભારત અને જાપાન", "USA, કેનેડા અને મેક્સિકો", "બ્રાઝીલ અને આર્જેન્ટિના", "ફ્રાન્સ અને જર્મની"], a: 1},
+    {q: "ભારતના હાલના (2025-26) ચીફ ઓફ ડિફેન્સ સ્ટાફ (CDS) કોણ છે?", o: ["જનરલ મનોજ પાંડે", "જનરલ અનિલ ચૌહાણ", "એડમિરલ હરિ કુમાર", "વી.આર. ચૌધરી"], a: 1},
+    {q: "તાજેતરમાં ભારતના કયા પાડોશી દેશે તેની નવી રાજધાની 'નુસંતારા' બનાવી છે?", o: ["થાઈલેન્ડ", "વિયેતનામ", "ઈન્ડોનેશિયા", "મલેશિયા"], a: 2},
+    {q: "ભારતનું કયું રાજ્ય 100% ઈલેક્ટ્રિફાઈડ રેલવે નેટવર્ક ધરાવતું પ્રથમ રાજ્ય બન્યું?", o: ["ગુજરાત", "હરિયાણા", "મહારાષ્ટ્ર", "તમિલનાડુ"], a: 1},
+    {q: "વર્ષ 2025 નો 'બુકર પ્રાઈઝ' એવોર્ડ કોને મળ્યો છે?", o: ["ગીતાંજલિ શ્રી", "સેહાન કરુણાતિલકા", "સલમાન રશ્દી", "નવીનતમ વિજેતા"], a: 3}, // નોંધ: પરીક્ષા સમયે લેટેસ્ટ નામ ચેક કરવું
+    {q: "ઈસરો (ISRO) દ્વારા ચંદ્ર પર માનવી મોકલવાનું કયું મિશન પાઈપલાઈનમાં છે?", o: ["ચંદ્રયાન-4", "ગગનયાન-2", "લ્યુપેક્સ (LUPEX)", "આદિત્ય-L1"], a: 2},
+
+    // --- ગુજરાત કરંટ અફેર્સ (Gujarat Current Affairs) ---
+    {q: "તાજેતરમાં ગુજરાતના કયા શહેરને 'વર્લ્ડ હેરિટેજ સિટી' તરીકે નવો પ્રોજેક્ટ મળ્યો છે?", o: ["વડોદરા", "લોથલ (નેશનલ મેરીટાઇમ મ્યુઝિયમ)", "સુરત", "રાજકોટ"], a: 1},
+    {q: "ગુજરાતના કયા જિલ્લામાં ભારતનો સૌથી મોટો 'હાઈબ્રિડ રિન્યુએબલ એનર્જી પાર્ક' બની રહ્યો છે?", o: ["બનાસકાંઠા", "કચ્છ", "જામનગર", "ભાવનગર"], a: 1},
+    {q: "ગુજરાત સરકારે કઈ નવી પોલિસી (2024-2029) તાજેતરમાં જાહેર કરી છે?", o: ["નવી આઈટી પોલિસી", "નવી સેમિકન્ડક્ટર પોલિસી", "નવી સ્પોર્ટ્સ પોલિસી", "નવી ટુરીઝમ પોલિસી"], a: 1},
+    {q: "સ્વચ્છ સર્વેક્ષણ 2025 મુજબ ગુજરાતનું કયું શહેર ટોપ-3 માં રહ્યું છે?", o: ["અમદાવાદ", "સુરત", "વડોદરા", "રાજકોટ"], a: 1},
+
+    // --- રમતગમત અને એવોર્ડ (Sports & Awards) ---
+    {q: "IPL 2025 ની વિજેતા ટીમ કઈ રહી?", o: ["ગુજરાત ટાઇટન્સ", "ચેન્નાઈ સુપર કિંગ્સ", "કોલકાતા નાઈટ રાઈડર્સ", "મુંબઈ ઇન્ડિયન્સ"], a: 2},
+    {q: "ભારતના કયા ખેલાડીએ તાજેતરમાં ઇન્ટરનેશનલ ક્રિકેટમાંથી નિવૃત્તિ જાહેર કરી?", o: ["રોહિત શર્મા", "વિરાટ કોહલી", "શિખર ધવન", "રવીન્દ્ર જાડેજા"], a: 2},
+    {q: "વર્ષ 2026 ના એશિયન ગેમ્સનું આયોજન કયા દેશમાં થશે?", o: ["ભારત", "ચીન", "જાપાન", "દક્ષિણ કોરિયા"], a: 2},
+
+    // --- નિમણૂક અને યોજના (Appointments & Schemes) ---
+    {q: "નીતિ આયોગના વર્તમાન ઉપાધ્યક્ષ (Vice Chairman) કોણ છે?", o: ["સુમન બેરી", "બી.વી.આર. સુબ્રમણ્યમ", "અમિતાભ કાંત", "પરમેશ્વરન અય્યર"], a: 0},
+    {q: "ભારત સરકારની કઈ યોજના હેઠળ મફત અનાજ વિતરણ લંબાવવામાં આવ્યું છે?", o: ["પીએમ કિસાન", "પીએમ ગરીબ કલ્યાણ અન્ન યોજના", "આયુષ્માન ભારત", "ઉજ્જવલા યોજના"], a: 1}
+            ]
+        };
+
+        let currentQuiz = [], index = 0, score = 0;
+
+        function startQuiz(subject) {
+            let display = document.getElementById("quizDisplay");
+            display.style.display = "block";
+            display.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById("quizTitle").innerText = subject.toUpperCase();
+            document.getElementById("resultArea").style.display = "none";
+            document.getElementById("question").style.display = "block";
+            document.getElementById("options").style.display = "block";
+            document.getElementById("nextBtn").style.display = "block";
+            currentQuiz = quizzes[subject];
+            index = 0; score = 0;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            let q = currentQuiz[index];
+            document.getElementById("question").innerText = (index + 1) + ". " + q.q;
+            document.getElementById("qCount").innerText = (index + 1) + " / " + currentQuiz.length;
+            let html = "";
+            q.o.forEach((opt, i) => { html += `<div class="option" onclick="selectOption(this,${i})">${opt}</div>`; });
+            document.getElementById("options").innerHTML = html;
+            document.getElementById("nextBtn").disabled = true;
+        }
+
+        function selectOption(el, i) {
+            let q = currentQuiz[index], ops = document.querySelectorAll(".option");
+            ops.forEach(o => o.onclick = null);
+            if (i === q.a) { el.classList.add("correct"); score++; } 
+            else { el.classList.add("wrong"); ops[q.a].classList.add("correct"); }
+            document.getElementById("nextBtn").disabled = false;
+        }
+
+        function nextQuestion() {
+            index++;
+            if (index < currentQuiz.length) { loadQuestion(); } 
+            else { showResult(); }
+        }
+
+        function showResult() {
+            document.getElementById("question").style.display="none";
+            document.getElementById("options").style.display="none";
+            document.getElementById("nextBtn").style.display="none";
+            document.getElementById("resultArea").style.display="block";
+            document.getElementById("finalScore").innerText = "સ્કોર: " + score + " / " + currentQuiz.length;
+        }
+
+        function closeQuiz() {
+            document.getElementById("quizDisplay").style.display = "none";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+<footer class="footer-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <h4 class="footer-logo">ExamPrep</h4>
+                <p class="footer-text">સ્પર્ધાત્મક પરીક્ષાઓની તૈયારી માટેનું શ્રેષ્ઠ પ્લેટફોર્મ. અહીં તમે ગણિત, રીઝનીંગ અને જીકે શીખી શકો છો.</p>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="home.html" class="footer-link">Home</a></li>
+                    <li><a href="exam.html" class="footer-link">Exam Pattern</a></li>
+                    <li><a href="book.html" class="footer-link">Books</a></li>
+                    <li><a href="quize.html" class="footer-link">Quiz</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <h5 class="footer-heading">Top Exams</h5>
+                <ul class="list-unstyled">
+                    <li><a href="ssc.html" class="footer-link">SSC Exams</a></li>
+                    <li><a href="Talati.html" class="footer-link">Talati / Clerk</a></li>
+                    <li><a href="GPSC.html" class="footer-link">GPSC Class 1-2</a></li>
+                    <li><a href="Railway.html" class="footer-link">Railway Recruitment</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <h5 class="footer-heading">Contact Us</h5>
+                <p class="footer-text">📧 support@examprep.com</p>
+                <p class="footer-text">📍 Gujarat, India</p>
+                <div class="social-icons">
+                    <a href="#" class="me-2 text-decoration-none">🌐</a>
+                    <a href="#" class="me-2 text-decoration-none">📘</a>
+                    <a href="#" class="me-2 text-decoration-none">📷</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="mb-0">© 2026 ExamPrep | All Rights Reserved</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</footer></body>
+</html>

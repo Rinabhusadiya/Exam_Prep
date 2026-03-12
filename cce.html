@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSSSB CCE Full Guide 2026</title>
+    <style>
+        :root {
+            --cce-purple: #27909c;
+            --cce-gold: #f0932b;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #2d3436;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            background: var(--bg-light); 
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 80px 10%;
+            background: linear-gradient(135deg, var(--cce-purple) 0%, #686de0 100%);
+            color: white;
+            flex-wrap: wrap; /* મોબાઈલ માટે */
+            text-align: left;
+        }
+
+        .hero-left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-right {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hero-right img {
+            max-width: 350px;
+            width: 100%;
+            animation: floatHero 4s ease-in-out infinite; /* એનિમેશન */
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+        }
+
+        /* હવામાં તરતી ઈમેજનું એનિમેશન */
+        @keyframes floatHero {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 { font-size: 40px; margin: 0; line-height: 1.2; }
+        .hero p { margin: 15px 0 25px; font-size: 1.1rem; opacity: 0.9; }
+
+        /* --- SYLLABUS BUTTON --- */
+        .view-btn {
+            padding: 15px 35px; background: var(--cce-gold); color: white;
+            border: none; border-radius: 50px; cursor: pointer;
+            font-weight: bold; font-size: 16px; text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(240, 147, 43, 0.4); transition: 0.3s;
+        }
+        .view-btn:hover { transform: scale(1.05); background: #e67e22; }
+
+        /* --- MODAL FOR SYLLABUS --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white; margin: 10% auto; padding: 30px;
+            width: 90%; max-width: 600px; border-radius: 20px;
+            position: relative; animation: slideIn 0.4s ease-out;
+        }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; }
+
+        /* --- TABLES --- */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: var(--cce-purple); color: white; }
+
+        /* --- OTHER SECTIONS --- */
+        .section-title { text-align: center; margin: 50px 0 30px; color: var(--cce-purple); font-size: 2rem; }
+        .grid-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; padding: 20px 10%;
+        }
+        .post-card {
+            background: var(--white); border-radius: 15px; padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06); border-left: 5px solid var(--cce-purple);
+        }
+
+        /* --- BOOKS --- */
+        .book-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        .book-img { padding: 20px; height: 180px; display: flex; align-items: center; justify-content: center; }
+        .book-img img { max-height: 100%; }
+        .buy-btn { width: 100%; padding: 12px; background: var(--cce-purple); color: white; border: none; font-weight: bold; cursor: pointer; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero { text-align: center; padding: 40px 20px; }
+            .hero-right { order: -1; margin-bottom: 30px; } /* ઈમેજ લખાણની ઉપર આવશે */
+            .grid-container { padding: 10px 5%; }
+        }
+        .back-home-btn {
+    padding: 15px 40px; 
+    background: var(--cce-purple); 
+    color:black; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s; /* માઉસ લઈ જતી વખતે સ્મૂધ લાગે તે માટે */
+}
+
+/* જ્યારે માઉસ બટન પર જશે ત્યારે જ આ થશે */
+.back-home-btn:hover {
+    background: var(--cce-gold); /* કલર બદલાઈને ગોલ્ડ થશે */
+    transform: translateY(-3px); /* બટન સહેજ ઉપર જશે */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* હળવો પડછાયો આવશે */
+}
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-left">
+        <h1>CCE Exam <br>Dashboard 2026</h1>
+        <p>Post Details, Syllabus & Preparation Books</p>
+        <button class="view-btn" onclick="openSyllabus()">📋 View Exam Syllabus</button>
+    </div>
+    
+    <div class="hero-right">
+        <img src="https://cdn-icons-png.flaticon.com/512/2641/2641409.png" alt="Exam Animation">
+    </div>
+</section>
+
+<div id="syllabusModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSyllabus()">&times;</span>
+        <h2 style="color: var(--cce-purple); text-align: center;">📝 CCE Exam Syllabus</h2>
+        <table>
+            <thead>
+                <tr><th>વિષય (Subject)</th><th>ગુણ</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Mathematics</td><td>30 Marks</td></tr>
+                <tr><td>Reasoning</td><td>40 Marks</td></tr>
+                <tr><td>English</td><td>15 Marks</td></tr>
+                <tr><td>Gujarati</td><td>15 Marks</td></tr>
+            </tbody>
+        </table>
+        <br>
+        <button class="buy-btn" style="border-radius: 8px;" onclick="closeSyllabus()">Close</button>
+    </div>
+</div>
+
+<h2 class="section-title">🏢 Available Posts</h2>
+<div class="grid-container">
+    <div class="post-card"><h3>હેડ ક્લાર્ક</h3><p>વહીવટી અને સુપરવાઈઝરી જવાબદારી (Group A).</p></div>
+    <div class="post-card"><h3>સિનિયર ક્લાર્ક</h3><p>વિવિધ ખાતાઓમાં સિનિયર વહીવટી પોસ્ટ (Group B).</p></div>
+    <div class="post-card"><h3>ઓફિસ આસિસ્ટન્ટ</h3><p>સચિવાલયમાં ક્લેરિકલ અને ડેટા કામગીરી.</p></div>
+</div>
+
+<h2 class="section-title">📚 Preparation Books</h2>
+<div class="grid-container">
+    <div class="book-card">
+        <div class="book-img"><img src="book30.jpg"></div>
+        <div class="book-info">
+            <p><strong>CCE Combined Book</strong></p>
+            <p style="color:var(--cce-gold); font-weight:bold;">₹550</p>
+            <a href="https://www.amazon.in/Combined-Competitive-Examination-SSC-RRB-IBPS-Administrative/dp/B0CTHM8W37" target="_blank"><button class="buy-btn">Buy Now</button></a>
+        </div>
+    </div>
+    <div class="book-card">
+        <div class="book-img"><img src="book31.jpg"></div>
+        <div class="book-info">
+            <p><strong>Master Reasoning</strong></p>
+            <p style="color:var(--cce-gold); font-weight:bold;">₹500</p>
+            <a href="https://jalarambookstore.com/detail/1829/adler32" target="_blank"><button class="buy-btn">Buy Now</button></a>
+        </div>
+    </div>
+    <div class="book-card">
+        <div class="book-img"><img src="book32.webp"></div>
+        <div class="book-info">
+            <p><strong>CCE Preparation</strong></p>
+            <p style="color:var(--cce-gold); font-weight:bold;">₹209</p>
+            <a href="https://www.book4u.co.in/products/cce-group-a-b" target="_blank"><button class="buy-btn">Buy Now</button></a>
+        </div>
+    </div>
+</div>
+
+<div style="text-align: center; padding: 50px;">
+    <a href="home.html" class="back-home-btn">
+        🏠 Back to Home
+    </a>
+</div>
+
+<script>
+    function openSyllabus() { document.getElementById("syllabusModal").style.display = "block"; }
+    function closeSyllabus() { document.getElementById("syllabusModal").style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("syllabusModal")) { closeSyllabus(); }
+    }
+</script>
+
+</body>
+</html>

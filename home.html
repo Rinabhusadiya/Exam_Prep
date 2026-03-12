@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamPrep</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+background:#f5f7fa;
+font-family:Arial;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+.navbar-brand{
+font-weight:bold;
+font-size:24px;
+color:#00bcd4 !important;
+}
+.nav-link:hover{
+color:#00bcd4 !important;
+}
+
+/* HERO */
+.hero{
+background:linear-gradient(120deg,#eaf7ff,#dff6ff);
+padding:80px 0;
+}
+.hero h1{
+font-size:40px;
+font-weight:bold;
+}
+
+/* FLOAT IMAGE */
+.float-img{
+animation:float 4s ease-in-out infinite;
+max-width: 100%; /* Mobile Friendly */
+height: auto;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+100%{transform:translateY(0)}
+}
+
+/* FADE UP */
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s forwards;
+}
+@keyframes fadeUp{
+to{ opacity:1; transform:translateY(0); }
+}
+
+/* FEATURE CARDS */
+.feature-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+transition:.3s;
+height: 100%; /* Card height match */
+}
+.feature-card:hover{
+transform:translateY(-10px);
+box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* EXAM CARDS */
+.exam-card{
+background:white;
+padding:25px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+transition:.3s;
+text-decoration:none;
+color:black;
+font-weight:bold;
+display:block;
+}
+.exam-card:hover{
+transform:translateY(-12px) scale(1.05);
+background:#dff6ff;
+box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* BOOK CARDS */
+.book-card{
+background:white;
+padding:20px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+transition:.3s;
+position: relative;
+}
+.book-card:hover{
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
+.book-card img{
+width:130px;
+height:180px;
+object-fit:cover;
+border-radius:6px;
+}
+
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 768px) {
+    .hero { text-align: center; padding: 40px 0; }
+    .hero h1 { font-size: 30px; }
+    .float-img { width: 200px; margin-top: 30px; }
+    .feature-card { margin-bottom: 10px; }
+}
+
+/* FOOTER STYLES */
+footer a{
+color:#ccc;
+text-decoration:none;
+display:block;
+margin-top:8px;
+}
+footer a:hover{ color:white; }
+.footer-link{
+display:block;
+color:#cbd5e1;
+text-decoration:none;
+margin-top:8px;
+}
+.footer-link:hover{
+color:#22c55e;
+padding-left:5px;
+transition:0.3s;
+}
+
+.like-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+.like-btn.liked { color: red; }
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-white shadow sticky-top">
+<div class="container">
+<a class="navbar-brand" href="#">ExamPrep</a>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="exam.html">Exam Pattern</a></li>
+<li class="nav-item"><a class="nav-link" href="book.html">Books</a></li>
+<li class="nav-item"><a class="nav-link" href="quize.html">Quiz</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-md-6">
+<h1 class="fade-up">Prepare for Competitive Exams</h1>
+<p class="mt-3 fade-up">
+Study Notes, Books, Mock Tests and Quiz for SSC, Talati, Constable, Railway and UPSC exams.
+</p>
+<a href="btn.html">
+<button class="btn btn-info text-white mt-3 fade-up">Start Learning</button>
+</a>
+</div>
+<div class="col-md-6 text-center">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" class="float-img">
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-5">
+<div class="container text-center">
+<h2 class="mb-5 fade-up">Why Choose ExamPrep</h2>
+<div class="row g-4">
+<div class="col-md-4">
+<div class="feature-card fade-up">
+<h4>Study Notes</h4>
+<p>Free notes for competitive exams.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="feature-card fade-up">
+<h4>Practice Quiz</h4>
+<p>Improve knowledge with quizzes.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="feature-card fade-up">
+<h4>Mock Tests</h4>
+<p>Practice real exam level tests.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-5 bg-light">
+<div class="container text-center">
+<h2 class="mb-5 fade-up">Popular Exams</h2>
+<div class="row g-4">
+<div class="col-6 col-md-4"><a href="ssc.html" class="exam-card fade-up">SSC</a></div>
+<div class="col-6 col-md-4"><a href="Constable.html" class="exam-card fade-up">Constable</a></div>
+<div class="col-6 col-md-4"><a href="Talati.html" class="exam-card fade-up">Talati</a></div>
+<div class="col-6 col-md-4"><a href="cce.html" class="exam-card fade-up">CCE</a></div>
+<div class="col-6 col-md-4"><a href="GPSC.html" class="exam-card fade-up">GPSC</a></div>
+<div class="col-6 col-md-4"><a href="Railway.html" class="exam-card fade-up">Railway</a></div>
+</div>
+</div>
+</section>
+
+<section class="py-5">
+<div class="container text-center">
+<h2 class="mb-5 fade-up">Popular Study Books</h2>
+<div class="row g-4">
+<div class="col-md-4">
+<div class="book-card">
+<button class="like-btn" onclick="this.classList.toggle('liked')">❤</button>
+<img src="book1.jpg">
+<h5 class="mt-2">SSC Maths</h5>
+<p class="text-success fw-bold">₹453</p>
+<a href="https://toppersnotes.com/product/ssc-cgl-toppers-handwritten-notes-all-subjects-hindi">
+<button class="btn btn-info text-white btn-sm">Show Book</button>
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="book-card">
+<button class="like-btn" onclick="this.classList.toggle('liked')">❤</button>
+<img src="book2.jpg">
+<h5 class="mt-2">Reasoning</h5>
+<p class="text-success fw-bold">₹389</p>
+<a href="https://www.amazon.in/Reasoning-chapter-detailed-explanation-tricks/dp/B0DSC19L6B">
+<button class="btn btn-info text-white btn-sm">Show Book</button>
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="book-card">
+<button class="like-btn" onclick="this.classList.toggle('liked')">❤</button>
+<img src="book3.jpg">
+<h5 class="mt-2">English Grammar</h5>
+<p class="text-success fw-bold">₹900</p>
+<a href="https://www.amazon.in/English-Grammar-Use-Book-Answers/dp/1108457657">
+<button class="btn btn-info text-white btn-sm">Show Book</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer style="background:#0f172a;color:white;padding:60px 0;margin-top:60px;">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-3">
+<h4 style="color:#22c55e;">ExamPrep</h4>
+<p style="color:#cbd5e1;">Best platform for competitive exam preparation. Here you can learn Reasoning, Maths, GK and more.</p>
+</div>
+<div class="col-md-3">
+<h5>Quick Links</h5>
+<a href="home.html" class="footer-link">Home</a>
+<a href="exam.html" class="footer-link">Exam Pattern</a>
+<a href="book.html" class="footer-link">Books</a>
+<a href="quize.html" class="footer-link">Quiz</a>
+</div>
+<div class="col-md-3">
+<h5>Top Exams</h5>
+<a href="ssc.html" class="footer-link">SSC</a>
+<a href="Talati.html" class="footer-link">Talati</a>
+<a href="GPSC.html" class="footer-link">GPSC</a>
+<a href="Railway.html" class="footer-link">Railway</a>
+</div>
+<div class="col-md-3">
+<h5>Contact</h5>
+<p style="color:#cbd5e1;">📧 support@examprep.com</p>
+<p style="color:#cbd5e1;">📍 India</p>
+<div style="font-size:20px;margin-top:10px;">
+<span style="margin-right:10px;cursor:pointer;">🌐</span>
+<span style="margin-right:10px;cursor:pointer;">📘</span>
+<span style="margin-right:10px;cursor:pointer;">📷</span>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid #334155;margin-top:40px;padding-top:20px;text-align:center;color:#94a3b8;">
+© 2026 ExamPrep | All Rights Reserved
+</div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

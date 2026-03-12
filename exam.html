@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exam Preparation</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f7fa;
+margin:0;
+}
+
+/* TITLE */
+
+.title{
+text-align:center;
+margin:40px 0;
+}
+
+/* EXAM BUTTONS */
+
+.exam-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-bottom:30px;
+}
+
+.exam-btn{
+background:#00bcd4;
+color:white;
+padding:12px 25px;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+
+.exam-btn:hover{
+background:#0097a7;
+transform:scale(1.1);
+}
+
+/* PATTERN */
+
+.pattern{
+display:none;
+max-width:900px;
+margin:auto;
+}
+
+/* TOPIC */
+
+.topic{
+background:white;
+padding:20px;
+margin:10px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:.3s;
+}
+
+.topic:hover{
+background:#e8faff;
+}
+
+/* EXAMPLE */
+
+.example{
+display:none;
+margin-top:10px;
+background:#f3f9ff;
+padding:10px;
+border-radius:8px;
+font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+background:#111;
+color:white;
+padding:50px 0;
+margin-top:60px;
+}
+
+footer a{
+color:#ccc;
+text-decoration:none;
+display:block;
+margin-top:8px;
+}
+
+footer a:hover{
+color:white;
+}
+
+.footer-bottom{
+border-top:1px solid #444;
+margin-top:30px;
+padding-top:15px;
+text-align:center;
+color:#aaa;
+}
+/* SUBJECT CARDS */
+
+.subject-card{
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:all .4s;
+}
+
+.subject-card:hover{
+transform:translateY(-10px) scale(1.05);
+background:#e8faff;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+.footer-link{
+display:block;
+color:#cbd5e1;
+text-decoration:none;
+margin-top:8px;
+}
+
+.footer-link:hover{
+color:#22c55e;
+padding-left:5px;
+transition:0.3s;
+}
+/* MOBILE RESPONSIVE */
+
+@media (max-width:768px){
+
+.exam-container{
+flex-direction:column;
+align-items:center;
+}
+
+.exam-btn{
+width:80%;
+text-align:center;
+}
+
+.subject-card{
+padding:20px;
+}
+
+.topic{
+margin:8px 0;
+}
+
+}
+* CARD STYLE */
+
+.subject-card{
+background:white;
+padding:30px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.4s;
+}
+
+.subject-card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* TOPIC BOX */
+
+.topic-box{
+display:none;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+animation:fadeIn 0.6s;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+</style>
+
+</head>
+<script>
+
+function showExam(id){
+
+let exams = document.querySelectorAll(".pattern");
+
+/* hide all */
+exams.forEach(function(section){
+section.style.display="none";
+});
+
+/* show selected */
+let current = document.getElementById(id);
+
+if(current){
+current.style.display="block";
+
+/* scroll to section */
+current.scrollIntoView({
+behavior:"smooth"
+});
+}
+
+}
+
+function toggleExample(id){
+
+let examples = document.querySelectorAll(".example");
+
+/* close others */
+examples.forEach(function(box){
+if(box.id !== id){
+box.style.display="none";
+}
+});
+
+/* toggle selected */
+let box = document.getElementById(id);
+
+if(box.style.display==="block"){
+box.style.display="none";
+}else{
+box.style.display="block";
+}
+
+}
+
+</script>
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#">ExamPrep</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="exam.html">Exam Pattern</a></li>
+<li class="nav-item"><a class="nav-link" href="book.html">Books</a></li>
+<li class="nav-item"><a class="nav-link" href="quize.html">Quiz</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<h2 class="title">Competitive Exam Preparation</h2>
+
+<!-- EXAM BUTTONS -->
+
+<div class="exam-container">
+
+<div class="exam-btn" onclick="showExam('ssc')">SSC</div>
+<div class="exam-btn" onclick="showExam('constable')">Constable</div>
+<div class="exam-btn" onclick="showExam('talati')">Talati</div>
+<div class="exam-btn" onclick="showExam('upsc')">UPSC</div>
+<div class="exam-btn" onclick="showExam('gpsc')">GPSC</div>
+<div class="exam-btn" onclick="showExam('railway')">Railway</div>
+
+</div>
+
+
+<!-- CONSTABLE -->
+
+<div id="constable" class="pattern container">
+
+<h3>Constable Reasoning Topics</h3>
+
+<div class="topic" onclick="toggleExample('ex1')">
+Reasoning & Ability     : Coding-Decoding, Blood Relations, Directions, Puzzles, Syllogism.<br>
+Mathematics  : Percentages, Profit & Loss, Simple/Compound Interest, Time & Speed, Simplification.<br>
+General Knowledge   : Indian History, Geography, and Culture.<br>
+<div id="ex1" class="example">
+Dog : Puppy :: Cat : Kitten
+</div>
+</div>
+
+<!-- <div class="topic" onclick="toggleExample('ex2')">
+Coding Decoding
+<div id="ex2" class="example">
+CAT → DBU  
+DOG → EPH
+</div>
+</div> -->
+
+</div>
+
+
+<!-- SSC -->
+
+<div id="ssc" class="pattern container">
+
+<h3>SSC Syllabus</h3>
+
+<div class="topic" onclick="toggleExample('ex3')">
+General Intelligence & Reasoning<br>
+General Knowledge & General Awareness<br>
+Elementary Mathematics<br>
+English/Hindi<br>
+<div id="ex3" class="example">
+A C E G → I
+</div>
+</div>
+
+</div>
+
+
+<!-- TALATI -->
+
+<div id="talati" class="pattern container">
+
+<h3>Talati Topics</h3>
+
+<div class="topic" onclick="toggleExample('ex4')">
+General Knowledge (Approx. 25-50 Marks)<br>
+Languages (Approx. 35-40 Marks)<br>
+Mathematics & Reasoning (Approx. 10-15 Marks)<br>
+Computer Knowledge (Approx. 25 Marks)<br>
+<div id="ex4" class="example">
+Noun, Verb, Tense
+</div>
+</div>
+
+</div>
+
+
+<!-- UPSC -->
+
+<div id="upsc" class="pattern container">
+
+<h3>UPSC Topics</h3>
+
+<div class="topic" onclick="toggleExample('ex5')">
+1. UPSC Prelims Syllabus (Objective Papers)<br>
+2. UPSC Mains Syllabus (Conventional Essay Type - 9 Papers)<br>
+3. Interview/Personality Test
+<br>
+<div id="ex5" class="example">
+Ancient, Medieval, Modern India
+</div>
+</div>
+
+</div>
+
+
+<!-- GPSC -->
+
+<div id="gpsc" class="pattern container">
+
+<h3>GPSC Topics</h3>
+
+<div class="topic" onclick="toggleExample('ex6')">
+1. Preliminary Exam (Objective Type - MCQ) <br>
+2. Main Exam (Descriptive Type - 900 Marks) <br>
+3. Interview (Personal Interview)
+<br>
+<div id="ex6" class="example">
+Solanki dynasty, Gujarat culture
+</div>
+</div>
+
+</div>
+
+
+<!-- RAILWAY -->
+
+<div id="railway" class="pattern container">
+
+<h3>Railway Topics</h3>
+
+<div class="topic" onclick="toggleExample('ex7')">
+Mathematics (25 Questions)<br>
+General Intelligence & Reasoning (30 Questions)<br>
+General Science (25 Questions)<br>
+General Awareness & Current Affairs (20 Questions)<br>
+<div id="ex7" class="example">
+Percentage, Ratio, Profit Loss
+</div>
+</div>
+
+</div>
+<!-- SUBJECT CARDS -->
+
+<!-- SUBJECT CARDS -->
+
+<div class="container mt-5">
+
+<h3 class="text-center mb-4">Subjects</h3>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="subject-card" onclick="showTopics('reasoning')">
+<h4>Reasoning</h4>
+<!-- <p>Puzzle, Analogy, Coding-Decoding</p> -->
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="subject-card" onclick="showTopics('maths')">
+<h4>Maths</h4>
+<!-- <p>Percentage, Ratio, Profit-Loss</p> -->
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="subject-card" onclick="showTopics('gk')">
+<h4>General Knowledge</h4>
+<!-- <p>History, Geography, Polity</p> -->
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOPICS TABLE -->
+
+<div class="container mt-5">
+
+<div id="topicBox" class="topic-box">
+
+<h4 id="topicTitle"></h4>
+
+<table class="table table-bordered text-center">
+
+<thead>
+<tr>
+<th>Topic</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody id="topicTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+<script>
+
+function showTopics(subject){
+
+let title = document.getElementById("topicTitle")
+let table = document.getElementById("topicTable")
+let box = document.getElementById("topicBox")
+
+box.style.display="block"
+
+let topics=""
+
+if(subject=="reasoning"){
+
+title.innerText="Reasoning Topics"
+
+topics=`
+<tr>
+<td>Analogy</td>
+<td>બે શબ્દો અથવા સંખ્યાઓ વચ્ચેનો સંબંધ શોધવાનો પ્રશ્ન</td>
+</tr>
+
+<tr>
+<td>Coding – Decoding</td>
+<td>Letters અથવા numbers ને code માં બદલવાનો pattern શોધવો</td>
+</tr>
+
+<tr>
+<td>Alphabet Series</td>
+<td>Alphabet pattern પરથી next letter શોધવો</td>
+</tr>
+
+<tr>
+<td>Number Series</td>
+<td>Number pattern પરથી આગળની સંખ્યા શોધવી</td>
+</tr>
+
+<tr>
+<td>Odd One Out</td>
+<td>Group માંથી અલગ item ઓળખવો</td>
+</tr>
+
+<tr>
+<td>Blood Relation</td>
+<td>Family relationship આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Direction Sense</td>
+<td>દિશા (North, South, East, West) આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Ranking</td>
+<td>Person ની position અથવા order શોધવાનો પ્રશ્ન</td>
+</tr>
+
+<tr>
+<td>Seating Arrangement</td>
+<td>લોકોનું arrangement અથવા position puzzle</td>
+</tr>
+
+<tr>
+<td>Puzzle</td>
+<td>Logical thinking થી puzzle solve કરવાના પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Syllogism</td>
+<td>Statement પરથી correct conclusion શોધવો</td>
+</tr>
+
+<tr>
+<td>Statement and Conclusion</td>
+<td>Statement પરથી logical conclusion પસંદ કરવો</td>
+</tr>
+
+<tr>
+<td>Mirror Image</td>
+<td>Object mirror માં કેવી રીતે દેખાશે તે શોધવું</td>
+</tr>
+
+<tr>
+<td>Paper Folding</td>
+<td>Paper fold કર્યા પછી pattern કેવી રીતે આવશે</td>
+</tr>
+
+<tr>
+<td>Embedded Figure</td>
+<td>Figure માં hidden shape શોધવી</td>
+</tr>
+`
+
+}
+
+if(subject=="maths"){
+
+title.innerText="Maths Topics"
+
+topics=`
+<tr>
+<td>Number System</td>
+<td>સંખ્યા પદ્ધતિ, prime number, LCM, HCF સંબંધિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Simplification</td>
+<td>ગણિતના expressions ને સરળ બનાવવાના પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Percentage</td>
+<td>ટકા આધારિત ગણતરી અને પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Ratio and Proportion</td>
+<td>અનુપાત અને પ્રમાણ આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Average</td>
+<td>સરેરાશ ગણતરી સંબંધિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Profit and Loss</td>
+<td>નફો અને નુકસાન આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Simple Interest</td>
+<td>સરળ વ્યાજ આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Compound Interest</td>
+<td>ચક્રવૃદ્ધિ વ્યાજ આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Time and Work</td>
+<td>કામ અને સમય આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Time Speed Distance</td>
+<td>ગતિ, અંતર અને સમય આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Mensuration</td>
+<td>આકારોનું ક્ષેત્રફળ અને પરિમાપ</td>
+</tr>
+
+<tr>
+<td>Data Interpretation</td>
+<td>Graph અને chart આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Probability</td>
+<td>સંભાવના આધારિત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Algebra</td>
+<td>Algebraic equations અને expressions</td>
+</tr>
+`
+
+}
+
+if(subject=="gk"){
+
+title.innerText="General Knowledge Topics"
+
+topics=`
+<tr>
+<td>Indian History</td>
+<td>ભારતનો ઇતિહાસ – પ્રાચીન, મધ્યકાલીન અને આધુનિક સમય</td>
+</tr>
+
+<tr>
+<td>Geography</td>
+<td>પૃથ્વી, નદીઓ, પર્વતો, વાતાવરણ અને દેશોની માહિતી</td>
+</tr>
+
+<tr>
+<td>Indian Polity</td>
+<td>ભારતનું બંધારણ, સરકારની રચના અને કાયદા</td>
+</tr>
+
+<tr>
+<td>Indian Economy</td>
+<td>ભારતની અર્થવ્યવસ્થા, બજેટ, GDP અને વિકાસ</td>
+</tr>
+
+<tr>
+<td>Science</td>
+<td>ભૌતિકશાસ્ત્ર, રસાયણશાસ્ત્ર અને જીવવિજ્ઞાનના મૂળભૂત પ્રશ્નો</td>
+</tr>
+
+<tr>
+<td>Environment</td>
+<td>પર્યાવરણ, જંગલ, પ્રદૂષણ અને Wildlife</td>
+</tr>
+
+<tr>
+<td>Current Affairs</td>
+<td>તાજેતરના સમાચાર, સરકારની યોજનાઓ અને મહત્વની ઘટનાઓ</td>
+</tr>
+
+<tr>
+<td>Indian Constitution</td>
+<td>ભારતનું બંધારણ, મૂળભૂત અધિકારો અને ફરજો</td>
+</tr>
+
+<tr>
+<td>Important Days</td>
+<td>રાષ્ટ્રીય અને આંતરરાષ્ટ્રીય મહત્વના દિવસો</td>
+</tr>
+
+<tr>
+<td>Books & Authors</td>
+<td>પ્રખ્યાત પુસ્તકો અને તેમના લેખકો</td>
+</tr>
+
+<tr>
+<td>Awards & Honours</td>
+<td>રાષ્ટ્રીય અને આંતરરાષ્ટ્રીય પુરસ્કારો</td>
+</tr>
+
+<tr>
+<td>Sports</td>
+<td>રમતગમત અને ખેલાડીઓ સંબંધિત માહિતી</td>
+</tr>
+
+<tr>
+<td>Countries & Capitals</td>
+<td>વિશ્વના દેશો અને તેમની રાજધાનીઓ</td>
+</tr>
+
+<tr>
+<td>Important Organizations</td>
+<td>UNO, WHO, IMF જેવી આંતરરાષ્ટ્રીય સંસ્થાઓ</td>
+</tr>
+`
+
+}
+
+table.innerHTML = topics
+
+}
+
+</script>
+<!-- MODERN FOOTER -->
+
+<footer style="background:#0f172a;color:white;padding:60px 0;margin-top:60px;">
+
+<div class="container">
+
+<div class="row g-4">
+
+<!-- ABOUT -->
+
+<div class="col-md-3">
+
+<h4 style="color:#22c55e;">ExamPrep</h4>
+
+<p style="color:#cbd5e1;">
+Best platform for competitive exam preparation.
+Here you can learn Reasoning, Maths, GK and more.
+</p>
+
+</div>
+
+
+<!-- QUICK LINKS -->
+
+<div class="col-md-3">
+
+<h5>Quick Links</h5>
+
+<a href="home.html" class="footer-link">Home</a>
+<a href="exam.html" class="footer-link">Exam Pattern</a>
+<a href="book.html" class="footer-link">Books</a>
+<a href="quize.html" class="footer-link">Quiz</a>
+
+</div>
+
+
+<!-- TOP EXAMS -->
+
+<div class="col-md-3">
+
+<h5>Top Exams</h5>
+
+<a href="ssc.html" class="footer-link">SSC</a>
+<a href="Talati.html" class="footer-link">Talati</a>
+<a href="GPSC.html" class="footer-link">GPSC</a>
+<a href="Railway.html" class="footer-link">Railway</a>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="col-md-3">
+
+<h5>Contact</h5>
+
+<p style="color:#cbd5e1;">📧 support@examprep.com</p>
+<p style="color:#cbd5e1;">📍 India</p>
+
+<div style="font-size:20px;margin-top:10px;">
+
+<span style="margin-right:10px;cursor:pointer;">🌐</span>
+<span style="margin-right:10px;cursor:pointer;">📘</span>
+<span style="margin-right:10px;cursor:pointer;">📷</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div style="border-top:1px solid #334155;margin-top:40px;padding-top:20px;text-align:center;color:#94a3b8;">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+© 2026 ExamPrep | All Rights Reserved
+
+</div>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

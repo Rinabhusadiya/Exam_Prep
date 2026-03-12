@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gujarat Talati Mantri 2026</title>
+
+    <style>
+
+        :root {
+
+            --panchayat-green: #1b5e20; /* Dark Panchayat Green */
+
+            --accent-orange: #ff9800; /* Vibrant Orange for Alerts */
+
+            --navy-blue: #0d47a1;
+
+            --light-bg: #f0f4f8;
+
+            --white: #ffffff;
+
+            --text-dark: #2c3e50;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+
+            margin: 0;
+
+            background: var(--light-bg);
+
+            scroll-behavior: smooth;
+
+            color: var(--text-dark);
+
+        }
+
+
+
+        /* --- HERO SECTION --- */
+
+        .hero {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-around;
+
+            padding: 100px 10%;
+
+            background: linear-gradient(135deg, #ffffff 0%, #dcfce7 100%); /* Light Greenish Gradient */
+
+            min-height: 60vh;
+
+        }
+
+        .hero-left { flex: 1; animation: fadeInLeft 1.2s ease-out; }
+
+        .hero-right { flex: 1; text-align: right; animation: fadeInRight 1.2s ease-out; }
+
+        .hero-right img {
+
+            max-width: 400px;
+
+            animation: float 4s ease-in-out infinite;
+
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+
+        }
+
+
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+
+
+
+        /* --- INFO CARDS --- */
+
+        .info-cards {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+
+            max-width: 1000px;
+
+            margin: -60px auto 60px;
+
+            padding: 0 20px;
+
+            position: relative;
+
+            z-index: 10;
+
+        }
+
+        .card-item {
+
+            background: var(--white);
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+
+            border-left: 8px solid var(--panchayat-green);
+
+            transition: 0.4s;
+
+            animation: fadeInUp 1s ease-out both;
+
+        }
+
+        .card-item:hover { transform: scale(1.03); }
+
+        .card-item h3 { color: var(--panchayat-green); margin-top: 0; font-size: 1.5rem; }
+
+
+
+        /* --- SYLLABUS MODAL --- */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 2000;
+
+            left: 0; top: 0; width: 100%; height: 100%;
+
+            background:white;
+
+            backdrop-filter: blur(8px);
+
+        }
+
+        .modal-content {
+
+            background: white;
+
+            margin: 5% auto;
+
+            padding: 40px;
+
+            width: 70%;
+
+            border-radius: 24px;
+
+            max-height: 80vh;
+
+            overflow-y: auto;
+
+            position: relative;
+
+            animation: modalSlide 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+        }
+
+        @keyframes modalSlide { from { transform: translateY(-100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .close { position: absolute; right: 25px; top: 20px; font-size: 35px; cursor: pointer; color: #64748b; }
+
+
+
+        /* --- TABLE --- */
+
+        table { width: 100%; border-collapse: collapse; margin-top: 25px; border-radius: 12px; overflow: hidden; }
+
+        th, td { padding: 18px; text-align: left; border-bottom: 1px solid #f1f5f9; }
+
+        th { background: var(--panchayat-green); color: white; text-transform: uppercase; }
+
+        tr:hover { background: #f8fafc; }
+
+
+
+        /* --- BUTTONS --- */
+
+        .btn {
+
+            padding: 15px 35px; border: none; border-radius: 12px;
+
+            cursor: pointer; font-weight: 700; transition: 0.4s;
+
+            text-transform: uppercase;
+
+        }
+
+        .btn-green { background: var(--panchayat-green); color: white; box-shadow: 0 10px 20px rgba(27, 94, 32, 0.2); }
+
+        .btn-green:hover { background: var(--navy-blue); transform: translateY(-5px); }
+
+
+
+        /* --- BOOKS SECTION --- */
+
+        .books-container { padding: 80px 5%; background-color: #f1f5f9; text-align: center; }
+
+        .section-title { color: var(--panchayat-green); font-size: 2.5rem; margin-bottom: 50px; }
+
+        .book-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 30px; max-width: 1200px; margin: 0 auto;
+
+        }
+
+        .book-card {
+
+            background: white; border-radius: 18px; overflow: hidden;
+
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.4s;
+
+            display: flex; flex-direction: column;
+
+        }
+
+        .book-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+
+        .book-img { background: #fff; padding: 20px; height: 260px; display: flex; align-items: center; justify-content: center; }
+
+        .book-img img { max-height: 100%; transition: 0.5s; }
+
+        .book-info { padding: 25px; text-align: left; }
+
+        .buy-btn {
+
+            width: 100%; padding: 12px; background: #81c784;
+
+            color: #fff; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;
+
+        }
+
+        .buy-btn:hover { background: var(--panchayat-green); }
+
+
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+
+
+        @media (max-width: 768px) {
+
+            .hero { flex-direction: column; text-align: center; padding-top: 50px; }
+
+            .info-cards { grid-template-columns: 1fr; }
+
+            .hero-right { order: -1; margin-bottom: 30px; }
+
+        }
+ .back-home-btn {
+    padding: 15px 40px; 
+    background: var(--cce-purple); 
+    color:black; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s; /* માઉસ લઈ જતી વખતે સ્મૂધ લાગે તે માટે */
+}
+
+/* જ્યારે માઉસ બટન પર જશે ત્યારે જ આ થશે */
+.back-home-btn:hover {
+    background: var(--cce-gold); /* કલર બદલાઈને ગોલ્ડ થશે */
+    transform: translateY(-3px); /* બટન સહેજ ઉપર જશે */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* હળવો પડછાયો આવશે */
+}
+
+    /* ... બીજા કોડ ... */
+
+    .hero-right img { 
+        max-width: 250px; /* આ વેલ્યુ બદલવાથી ઈમેજ નાની થશે */
+        animation: float 4s ease-in-out infinite; 
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+    }
+
+    /* ... બાકીનો કોડ ... */
+
+.hero-right img { 
+    max-width: 250px; /* અહીં 450px હતું, તેને ઘટાડીને 250px કર્યું છે */
+    animation: float 4s ease-in-out infinite; 
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}</style>
+    </style>
+
+</head>
+
+<body>
+
+
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <h1 style="font-size: 50px; color: var(--panchayat-green); line-height: 1.2;">Talati-cum-Mantri <br><span style="color: var(--accent-orange);">Exam 2026</span></h1>
+
+        <p style="font-size: 1.1rem; margin-bottom: 30px;">GPSSB તલાટી ભરતી માટે સંપૂર્ણ માર્ગદર્શન અને સ્ટડી મટીરીયલ.</p>
+
+        <button class="btn btn-green" onclick="openSyllabus()">📋 View Talati Syllabus</button>
+
+    </div>
+
+    <div class="hero-right">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3534/3534031.png" alt="Talati Icon">
+
+    </div>
+
+</section>
+
+
+
+<div class="info-cards">
+
+    <div class="card-item" style="animation-delay: 0.2s;">
+
+        <h3>📊 Job Profile</h3>
+
+        <p><strong>પગાર ધોરણ:</strong> ₹26,000/- (અંદાજિત ફિક્સ પે)</p>
+
+        <p>ગ્રામ પંચાયત મંત્રી તરીકે વહીવટી કામગીરીની સુવર્ણ તક.</p>
+
+    </div>
+
+    <div class="card-item" style="animation-delay: 0.4s;">
+
+        <h3>⏳ Eligibility</h3>
+
+        <p><strong>વય મર્યાદા:</strong> 18 થી 34 વર્ષ</p>
+
+        <p><strong>લાયકાત:</strong> ધોરણ 12 પાસ (HSC) + કોમ્પ્યુટર જ્ઞાન.</p>
+
+    </div>
+
+</div>
+
+
+
+<div id="syllabusModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeSyllabus()">&times;</span>
+
+        <h2 style="color: var(--panchayat-green); border-bottom: 3px solid var(--accent-orange); display: inline-block;">Talati Full Syllabus (100 Marks)</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>વિષય (Subject)</th>
+
+                    <th>ગુણ (Marks)</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr><td>સામાન્ય જ્ઞાન (GK)</td><td>50 Marks</td></tr>
+
+                <tr><td>ગુજરાતી વ્યાકરણ અને સાહિત્ય</td><td>20 Marks</td></tr>
+
+                <tr><td>અંગ્રેજી વ્યાકરણ (English Grammar)</td><td>20 Marks</td></tr>
+
+                <tr><td>ગણિત (General Maths)</td><td>10 Marks</td></tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <button class="btn btn-green" onclick="closeSyllabus()">Close Window</button>
+
+    </div>
+
+</div>
+
+
+
+<section class="books-container">
+
+    <h2 class="section-title">📚 Best Books for Talati Preparation</h2>
+
+    <div class="book-grid">
+
+        <div class="book-card">
+
+            <div class="book-img"><img src="book24.jpg" alt="Gujarati Grammar"></div>
+
+            <div class="book-info">
+
+                <h4>₹99.00</h4>
+
+                <h4>⭐⭐⭐⭐</h4>
+
+                <p><strong>
+
+ગુજરાતી સાહિત્ય</strong></p>
+
+                <a href="https://www.amazon.in/Gujarati-Sahitya-Hetulakshi-Varnatmak-Swarupe/dp/B085MXPZ1D">
+
+                <button class="buy-btn">Buy Now</button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="book-card">
+
+            <div class="book-img"><img src="book25.jpg" alt="English Grammar"></div>
+
+            <div class="book-info">
+
+                <h4>₹550</h4>
+
+                <h4>⭐⭐⭐⭐</h4>
+
+                <p><strong>
+
+તલાટી કમ મંત્રી અને જુનિયર ક્લાર્ક</strong> </p>
+
+                <a href="https://onlinebookzone.com/shop/talati-exam-books/talati-cum-mantri-and-junior-clerk-world-inbox-book-2023/?srsltid=AfmBOoqoPjyPJiW_vZ7tcXJ2IgnWffnUSo3KP8UcAJ-NXm5-KqfnoaV5">
+
+                <button class="buy-btn">Buy Now</button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="book-card">
+
+            <div class="book-img"><img src="book26.jpg" alt="GK Book"></div>
+
+            <div class="book-info">
+
+                <h4>₹390</h4>
+
+                <h4>⭐⭐⭐⭐⭐</h4>
+
+                <p><strong>
+
+ભારતની ભૂગોલ</strong></p>
+
+                <a href="home.html">
+
+                <button class="buy-btn">Buy Now</button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<div style="text-align: center; padding: 50px;">
+    <a href="home.html" class="back-home-btn">
+        🏠 Back to Home
+    </a>
+</div>
+
+
+
+
+<script>
+
+    function openSyllabus() { document.getElementById("syllabusModal").style.display = "block"; }
+
+    function closeSyllabus() { document.getElementById("syllabusModal").style.display = "none"; }
+
+    window.onclick = function(event) {
+
+        if (event.target == document.getElementById("syllabusModal")) { closeSyllabus(); }
+
+    }
+
+</script>
+
+
+
+</body>
+
