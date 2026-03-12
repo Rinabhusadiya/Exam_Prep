@@ -18,7 +18,21 @@ font-family:Arial;
 background:#f4f6f9;
 margin:0;
 }
+/* મેનૂ લિંક્સ અને બટન પરથી બ્લૂ કલર હટાવવા માટે */
+.navbar-nav .nav-link:focus, 
+.navbar-nav .nav-link:active,
+.navbar-toggler:focus, 
+.navbar-toggler:active {
+    background-color: transparent !important; /* કલર કાઢી નાખશે */
+    color: inherit !important;                /* અક્ષરોનો કલર એવો જ રાખશે */
+    outline: none !important;                 /* બોર્ડર કાઢી નાખશે */
+    box-shadow: none !important;              /* પડછાયો કાઢી નાખશે */
+}
 
+/* ખાસ કરીને મોબાઈલ મેનૂ આઈટમ્સ માટે */
+.navbar-collapse {
+    background-color: white !important; /* મેનૂની પાછળનો ભાગ સફેદ રાખશે */
+}
 /* TITLE */
 
 h1{
@@ -501,6 +515,7 @@ Here you can learn Reasoning, Maths, GK and more.
 </body>
 
 </html>
+
 
 
 
