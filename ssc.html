@@ -131,7 +131,18 @@
     font-size: 14px;
     vertical-align: middle;
 }
-
+.modal-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+z-index:9999;
+align-items:center;
+justify-content:center;
+}
 /* સેલરી હાઈલાઈટ કરવા માટે */
 .salary-box {
     background-color: #dcfce7;
@@ -946,20 +957,7 @@ background:#1e40af;
 </style>
 </head>
   
-    <script>
-
-const heroImg = document.querySelector(".hero-image img");
-
-document.addEventListener("mousemove", (e) => {
-
-let x = (window.innerWidth / 2 - e.pageX) / 40;
-let y = (window.innerHeight / 2 - e.pageY) / 40;
-
-heroImg.style.transform = `translate(${x}px, ${y}px)`;
-
-});
-
-</script>
+   
 <body>
 <section class="hero-section">
 
@@ -1584,6 +1582,26 @@ function scrollToTop() {
     });
 }
 </script>
+    <script>
+
+function openPostModal(){
+    document.getElementById("postModal").style.display = "flex";
+    document.body.style.overflow = "hidden";
+}
+
+function closePostModal(){
+    document.getElementById("postModal").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event){
+    let modal = document.getElementById("postModal");
+    if(event.target == modal){
+        closePostModal();
+    }
+}
+
+</script>
 <div style="text-align: center; padding: 50px;">
     <a href="index.html" class="back-home-btn">
         🏠 Back to Home
@@ -1592,6 +1610,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
