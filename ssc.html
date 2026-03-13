@@ -716,6 +716,36 @@ td {
 .back-home-btn:hover {
     background: #334155;
 }
+        @media(max-width:768px){
+
+.hero-flex{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-right img{
+width:90%;
+margin:auto;
+}
+
+}.syllabus-table-main{
+background:white;
+border:1px solid #e2e8f0;
+}
+
+.syllabus-table-main th{
+background:#2563eb;
+color:white;
+}
+
+.syllabus-table-main td{
+background:#f8fafc;
+}.post-table thead th{
+background:#1e293b !important;
+color:white !important;
+font-weight:bold;
+border:1px solid #475569;
+}
 </style>
 </head>
     <script>
@@ -863,23 +893,16 @@ window.onclick = function(event) {
                 </table>
             </div>
 
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="back-home-btn" onclick="closePostModal()">
-                    🏠 Return to Home Page
-                </button>
-            </div>
+            <div style="text-align:center;margin-top:20px;">
+<button class="back-home-btn" onclick="closePostModal()">
+🏠 Return to Home Page
+</button>
+</div>
         </div>
     </div>
 </div>
 
-            <div style="text-align: center; margin-top: 25px;">
-                <button class="back-home-btn" onclick="closePostModal()">
-                    🏠 Return to Main Page
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+         
 
             <div class="hero-right">
                 <img src="img2.jpg" alt="Student" class="fade-in-right">
@@ -1355,6 +1378,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
