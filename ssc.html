@@ -945,25 +945,7 @@ background:#1e40af;
 }
 </style>
 </head>
-    <script>
-function openPostModal() {
-    document.getElementById("postModal").style.display = "block";
-    document.body.style.overflow = "hidden"; // મેઈન પેજનું સ્ક્રોલિંગ બંધ
-}
-
-function closePostModal() {
-    document.getElementById("postModal").style.display = "none";
-    document.body.style.overflow = "auto"; // મેઈન પેજનું સ્ક્રોલિંગ ચાલુ
-}
-
-// બહાર ક્લિક કરવાથી બંધ થાય તે માટે
-window.onclick = function(event) {
-    let modal = document.getElementById("postModal");
-    if (event.target == modal) {
-        closePostModal();
-    }
-}
-</script>
+  
     <script>
 
 const heroImg = document.querySelector(".hero-image img");
@@ -991,8 +973,9 @@ heroImg.style.transform = `translate(${x}px, ${y}px)`;
 Study Notes, Books, Mock Tests and Quiz for SSC, Talati,
 Constable, Railway and UPSC exams.
 </p>
-
-<button class="hero-btn">View Exam Syllabus</button>
+<button class="hero-btn" onclick="openPostModal()">
+View Exam Syllabus
+</button>
 
 </div>
 
@@ -1609,6 +1592,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
