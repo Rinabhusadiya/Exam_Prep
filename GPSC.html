@@ -55,6 +55,42 @@
             margin: -50px auto 50px;
             padding: 0 20px;
         }
+        /* ઈમેજને મોબાઈલ મુજબ સેટ કરવા માટે */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ખાસ કરીને હીરો સેક્શનની ઈમેજ માટે */
+.hero-right img {
+    max-width: 100%; /* મોબાઈલમાં સ્ક્રીનની બહાર નહીં જાય */
+    height: auto;
+}
+
+/* બુકની ઈમેજ વ્યવસ્થિત દેખાય તે માટે */
+.book-img img {
+    max-width: 100%;
+    max-height: 180px; /* ઊંચાઈ જળવાઈ રહેશે */
+    object-fit: contain; /* ઈમેજ ખેંચાશે નહીં */
+}
+
+/* મોબાઈલ વ્યુ માટે વધારાનું સેટિંગ */
+@media (max-width: 768px) {
+    .hero-right img {
+        max-width: 250px; /* મોબાઈલમાં ફોટો બહુ મોટો ન લાગે તે માટે */
+        margin: 0 auto;
+    }
+    
+    .modal-content {
+        width: 90%; /* મોબાઈલમાં મોડલ બોક્સ આખું દેખાય */
+        padding: 15px;
+    }
+    
+    .syllabus-table {
+        font-size: 14px; /* ટેબલના અક્ષર નાના કરવા જેથી ફિટ થઈ જાય */
+    }
+}
         .card-item {
             background: var(--white); 
             padding: 25px; 
@@ -342,3 +378,4 @@
 </body>
 
 </html>
+
