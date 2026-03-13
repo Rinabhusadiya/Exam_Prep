@@ -504,6 +504,16 @@
             document.getElementById("quizDisplay").style.display = "none";
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        function startQuiz(subject){
+  currentQuiz = subject;
+  currentQuestionIndex = 0;
+  score = 0;
+
+  document.getElementById("quiz-container").style.display = "block";
+  document.getElementById("result-container").style.display = "none";
+
+  loadQuestion();
+}
     </script>
 
 <footer class="footer-section">
@@ -555,3 +565,4 @@
 </body>
 
 </html>
+
