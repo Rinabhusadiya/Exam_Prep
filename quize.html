@@ -540,19 +540,18 @@
             else { showResult(); }
         }
 
-        function showResult() {
-            document.getElementById("question").style.display="none";
-            document.getElementById("options").style.display="none";
-            document.getElementById("nextBtn").style.display="none";
-            document.getElementById("resultArea").style.display="block";
-            document.getElementById("finalScore").innerText = "સ્કોર: " + score + " / " + currentQuiz.length;
-        }
+      
 
-        function closeQuiz() {
-            document.getElementById("quizDisplay").style.display = "none";
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-   function startQuiz(subject) {
+<!-- તમારો બધો code ઉપરનો same રહેશે -->
+
+<script>
+const quizzes = {
+   // (તમારા બધા questions same છે — અહીં કોઈ change નથી)
+};
+
+let currentQuiz = [], index = 0, score = 0;
+
+function startQuiz(subject) {
     let display = document.getElementById("quizDisplay");
     display.style.display = "block";
     display.scrollIntoView({ behavior: 'smooth' });
@@ -569,10 +568,145 @@
 
     loadQuestion();
 }
-    </script>
+
+function loadQuestion() {
+    let q = currentQuiz[index];
+    document.getElementById("question").innerText = (index + 1) + ". " + q.q;
+    document.getElementById("qCount").innerText = (index + 1) + " / " + currentQuiz.length;
+
+    let html = "";
+    q.o.forEach((opt, i) => {
+        html += `<div class="option" onclick="selectOption(this,${i})">${opt}</div>`;
+    });
+
+    document.getElementById("options").innerHTML = html;
+    document.getElementById("nextBtn").disabled = true;
+}
+
+function selectOption(el, i) {
+    let q = currentQuiz[index];
+    let ops = document.querySelectorAll(".option");
+
+    ops.forEach(o => o.onclick = null);
+
+    if (i === q.a) {
+        el.classList.add("correct");
+        score++;
+    } else {
+        el.classList.add("wrong");
+        ops[q.a].classList.add("correct");
+    }
+
+    document.getElementById("nextBtn").disabled = false;
+}
+
+function nextQuestion() {
+    index++;
+
+    if (index < currentQuiz.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("options").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+
+    document.getElementById("resultArea").style.display = "block";
+    document.getElementById("finalScore").innerText =
+        "સ્કોર: " + score + " / " + currentQuiz.length;
+}
+
+function closeQuiz() {
+    document.getElementById("quizDisplay").style.display = "none";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+<script>
+let currentQuiz = [], index = 0, score = 0;
+
+function startQuiz(subject) {
+    let display = document.getElementById("quizDisplay");
+    display.style.display = "block";
+    display.scrollIntoView({ behavior: 'smooth' });
+
+    document.getElementById("quizTitle").innerText = subject.toUpperCase();
+    document.getElementById("resultArea").style.display = "none";
+    document.getElementById("question").style.display = "block";
+    document.getElementById("options").style.display = "block";
+    document.getElementById("nextBtn").style.display = "block";
+
+    currentQuiz = quizzes[subject];
+    index = 0;
+    score = 0;
+
+    loadQuestion();
+}
+
+function loadQuestion() {
+    let q = currentQuiz[index];
+    document.getElementById("question").innerText = (index + 1) + ". " + q.q;
+    document.getElementById("qCount").innerText = (index + 1) + " / " + currentQuiz.length;
+
+    let html = "";
+    q.o.forEach((opt, i) => {
+        html += `<div class="option" onclick="selectOption(this,${i})">${opt}</div>`;
+    });
+
+    document.getElementById("options").innerHTML = html;
+    document.getElementById("nextBtn").disabled = true;
+}
+
+function selectOption(el, i) {
+    let q = currentQuiz[index];
+    let ops = document.querySelectorAll(".option");
+
+    ops.forEach(o => o.onclick = null);
+
+    if (i === q.a) {
+        el.classList.add("correct");
+        score++;
+    } else {
+        el.classList.add("wrong");
+        ops[q.a].classList.add("correct");
+    }
+
+    document.getElementById("nextBtn").disabled = false;
+}
+
+function nextQuestion() {
+    index++;
+
+    if (index < currentQuiz.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("options").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+
+    document.getElementById("resultArea").style.display = "block";
+    document.getElementById("finalScore").innerText =
+        "સ્કોર: " + score + " / " + currentQuiz.length;
+}
+
+function closeQuiz() {
+    document.getElementById("quizDisplay").style.display = "none";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 </body>
 
 </html>
+
 
 
 
