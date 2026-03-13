@@ -699,7 +699,71 @@ td {
     display: inline-block;
     border: 1px solid #bbf7d0;
 }
+.hero{
+padding:60px 20px;
+background:#f1f5f9;
+}
 
+.hero-flex{
+display:flex;
+align-items:center;
+justify-content:space-between;
+max-width:1100px;
+margin:auto;
+gap:40px;
+}
+
+.hero-text{
+flex:1;
+}
+
+.hero-text h1{
+font-size:40px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.hero-text p{
+font-size:18px;
+color:#475569;
+margin-bottom:20px;
+}
+
+.hero-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero-btn:hover{
+background:#1e40af;
+}
+
+.hero-img{
+flex:1;
+text-align:center;
+}
+
+.hero-img img{
+width:100%;
+max-width:420px;
+}@media(max-width:768px){
+
+.hero-flex{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-img img{
+max-width:300px;
+}
+
+}
 /* Return Home Button Inside Modal */
 .back-home-btn {
     padding: 12px 30px;
@@ -768,8 +832,30 @@ window.onclick = function(event) {
 }
 </script>
 <body>
+<section class="hero">
 
-<section class="home-hero">
+<div class="hero-flex">
+
+<div class="hero-text">
+<h1>Prepare for <br> Competitive Exams</h1>
+
+<p>
+Study Notes, Books, Mock Tests and Quiz for SSC, Talati,
+Constable, Railway and UPSC exams.
+</p>
+
+<button class="hero-btn">View Exam Syllabus</button>
+
+</div>
+
+<div class="hero-img">
+<img src="ssc.png" alt="Exam Preparation">
+</div>
+
+</div>
+
+</section>
+<!-- <section class="home-hero">
     <div class="container">
         <div class="hero-flex">
             
@@ -778,9 +864,9 @@ window.onclick = function(event) {
                 <p class="fade-in-left-delay">Study Notes, Books, Mock Tests and Quiz for SSC, Talati, Constable, Railway and UPSC exams.</p>
                 <!-- <button class="start-btn fade-in-left-delay">Start Learning</button> -->
                 <!-- <button class="btn-main" onclick="openPostModal()">Start Learning</button> -->
-<button class="btn-syllabus-view" onclick="openPostModal()">
+<!-- <button class="btn-syllabus-view" onclick="openPostModal()">
     View Exam Syllabus
-</button>
+</button> --> -->
 <!-- <div id="postModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
@@ -897,13 +983,10 @@ window.onclick = function(event) {
 <button class="back-home-btn" onclick="closePostModal()">
 🏠 Return to Home Page
 </button>
-</div>
+            </div>
         </div>
     </div>
 </div>
-
-         
-
             <div class="hero-right">
                 <img src="img2.jpg" alt="Student" class="fade-in-right">
             </div>
@@ -1378,6 +1461,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
