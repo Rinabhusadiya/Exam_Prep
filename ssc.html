@@ -873,6 +873,71 @@ color:white !important;
 font-weight:bold;
 border:1px solid #475569;
 }
+        /* HERO ANIMATION */
+
+.fade-left{
+opacity:0;
+transform:translateX(-60px);
+animation:fadeLeft 1.2s ease forwards;
+}
+
+.fade-right{
+opacity:0;
+transform:translateX(60px);
+animation:fadeRight 1.2s ease forwards;
+}
+
+@keyframes fadeLeft{
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+@keyframes fadeRight{
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+/* TITLE ANIMATION */
+
+.hero-title{
+animation:fadeUp 1.2s ease;
+}
+
+.hero-desc{
+animation:fadeUp 1.6s ease;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* BUTTON HOVER */
+
+.hero-btn{
+background:#2563eb;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero-btn:hover{
+transform:scale(1.1);
+background:#1e40af;
+}
 </style>
 </head>
     <script>
@@ -893,6 +958,20 @@ window.onclick = function(event) {
         closePostModal();
     }
 }
+</script>
+    <script>
+
+const heroImg = document.querySelector(".hero-image img");
+
+document.addEventListener("mousemove", (e) => {
+
+let x = (window.innerWidth / 2 - e.pageX) / 40;
+let y = (window.innerHeight / 2 - e.pageY) / 40;
+
+heroImg.style.transform = `translate(${x}px, ${y}px)`;
+
+});
+
 </script>
 <body>
 <section class="hero-section">
@@ -1053,9 +1132,7 @@ Constable, Railway and UPSC exams.
         </div>
     </div>
 </div>
-            <div class="hero-right">
-                <img src="img2.jpg" alt="Student" class="fade-in-right">
-            </div>
+           
 
         </div>
     </div>
@@ -1527,6 +1604,7 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
 
