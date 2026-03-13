@@ -47,7 +47,36 @@
             gap: 20px;
             margin-bottom: 30px;
         }
+/* ટેબલ હેડરનો બેકગ્રાઉન્ડ કલર અને લખાણ સફેદ કરવા માટે */
+.post-table thead tr {
+    background-color: #2563eb !important; /* બ્લુ કલર */
+}
 
+.post-table th {
+    color: white !important; /* લખાણ સફેદ */
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+    font-weight: bold;
+}
+
+/* ટેબલના દરેક ખાનામાં બોર્ડર અને યોગ્ય પેડિંગ */
+.post-table td {
+    padding: 12px;
+    border: 1px solid #eee;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+/* સેલરી હાઈલાઈટ કરવા માટે */
+.salary-box {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+}
         .exam-card {
             background: white;
             padding: 25px;
@@ -568,6 +597,65 @@ td {
     background: #1e293b;
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}/* View Exam Syllabus Button - Clean Look & Mouse Hover */
+.btn-syllabus-view {
+    padding: 14px 32px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease; /* સ્મૂધ માઉસ ઈવેન્ટ માટે */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mouse Hover Event */
+.btn-syllabus-view:hover {
+    background-color: #1e40af; /* માઉસ લઈ જતાં ડાર્ક બ્લુ થશે */
+    transform: translateY(-2px); /* સહેજ ઉપર આવશે */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal Table Header & Salary Box Styling */
+.post-table thead tr {
+    background-color: #1e293b !important; /* ડાર્ક હેડર */
+}
+
+.post-table th {
+    color: white !important;
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #475569;
+}
+
+.salary-box {
+    background-color: #dcfce7; /* હળવો લીલો રંગ */
+    color: #166534;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-block;
+    border: 1px solid #bbf7d0;
+}
+
+/* Return Home Button Inside Modal */
+.back-home-btn {
+    padding: 12px 30px;
+    background: #64748b;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.back-home-btn:hover {
+    background: #334155;
 }
 </style>
 </head>
@@ -582,8 +670,8 @@ td {
                 <p class="fade-in-left-delay">Study Notes, Books, Mock Tests and Quiz for SSC, Talati, Constable, Railway and UPSC exams.</p>
                 <!-- <button class="start-btn fade-in-left-delay">Start Learning</button> -->
                 <!-- <button class="btn-main" onclick="openPostModal()">Start Learning</button> -->
-<button class="btn-main btn-animate" onclick="openPostModal()">
-    <span>Start Learning</span>
+<button class="btn-syllabus-view" onclick="openPostModal()">
+    View Exam Syllabus
 </button>
 <!-- <div id="postModal" class="modal-overlay">
     <div class="modal-content">
@@ -650,14 +738,14 @@ td {
     </div>
 </div>
             </div> -->
-                <div id="postModal" class="modal-overlay">
+             <div id="postModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>SSC Recruitment Post Details</h2>
+            <h2 style="margin:0; color:white;">SSC Recruitment Post Details</h2>
             <span class="close-btn" onclick="closePostModal()">&times;</span>
         </div>
         <div class="modal-body">
-            <p>SSC દ્વારા ભરવામાં આવતી મુખ્ય પોસ્ટ્સની માહિતી નીચે મુજબ છે:</p>
+            <p style="margin-bottom:15px; font-weight:600;">SSC દ્વારા ભરવામાં આવતી મુખ્ય પોસ્ટ્સની માહિતી:</p>
             <div class="table-responsive">
                 <table class="post-table">
                     <thead>
@@ -671,31 +759,40 @@ td {
                     <tbody>
                         <tr>
                             <td><b>SSC CGL</b></td>
-                            <td>Income Tax Inspector, ASO, Excise Inspector</td>
+                            <td>Income Tax Inspector, ASO</td>
                             <td>Graduate</td>
-                            <td>₹44,900 - ₹1,42,400</td>
+                            <td><span class="salary-box">₹44k - ₹1.4L</span></td>
                         </tr>
                         <tr>
                             <td><b>SSC CHSL</b></td>
-                            <td>LDC, Data Entry Operator (DEO), JSA</td>
+                            <td>LDC, DEO, JSA</td>
                             <td>12th Pass</td>
-                            <td>₹19,900 - ₹63,200</td>
+                            <td><span class="salary-box">₹19k - ₹63k</span></td>
                         </tr>
                         <tr>
                             <td><b>SSC MTS</b></td>
-                            <td>Peon, Daftary, Jamadar, Mali</td>
+                            <td>Peon, Mali, Jamadar</td>
                             <td>10th Pass</td>
-                            <td>₹18,000 - ₹22,000</td>
+                            <td><span class="salary-box">₹18k - ₹22k</span></td>
                         </tr>
                         <tr>
                             <td><b>SSC GD</b></td>
-                            <td>BSF, CISF, ITBP, CRPF Constable</td>
+                            <td>BSF, CISF Constable</td>
                             <td>10th Pass</td>
-                            <td>₹21,700 - ₹69,100</td>
+                            <td><span class="salary-box">₹21k - ₹69k</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="back-home-btn" onclick="closePostModal()">
+                    🏠 Return to Home Page
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
             <div style="text-align: center; margin-top: 25px;">
                 <button class="back-home-btn" onclick="closePostModal()">
