@@ -549,6 +549,26 @@ td {
     transform: translateY(-3px); /* બટન સહેજ ઉપર જશે */
     box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* હળવો પડછાયો આવશે */
 }
+        .back-home-btn {
+    padding: 12px 35px; 
+    background: #2563eb; 
+    color: white; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.back-home-btn:hover {
+    background: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
 </style>
 </head>
 <body>
@@ -565,7 +585,7 @@ td {
 <button class="btn-main btn-animate" onclick="openPostModal()">
     <span>Start Learning</span>
 </button>
-<div id="postModal" class="modal-overlay">
+<!-- <div id="postModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
             <h2>SSC Recruitment Post Details</h2>
@@ -629,7 +649,62 @@ td {
         </div>
     </div>
 </div>
+            </div> -->
+                <div id="postModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>SSC Recruitment Post Details</h2>
+            <span class="close-btn" onclick="closePostModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>SSC દ્વારા ભરવામાં આવતી મુખ્ય પોસ્ટ્સની માહિતી નીચે મુજબ છે:</p>
+            <div class="table-responsive">
+                <table class="post-table">
+                    <thead>
+                        <tr>
+                            <th>Exam</th>
+                            <th>Popular Posts</th>
+                            <th>Qualification</th>
+                            <th>Approx Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>SSC CGL</b></td>
+                            <td>Income Tax Inspector, ASO, Excise Inspector</td>
+                            <td>Graduate</td>
+                            <td>₹44,900 - ₹1,42,400</td>
+                        </tr>
+                        <tr>
+                            <td><b>SSC CHSL</b></td>
+                            <td>LDC, Data Entry Operator (DEO), JSA</td>
+                            <td>12th Pass</td>
+                            <td>₹19,900 - ₹63,200</td>
+                        </tr>
+                        <tr>
+                            <td><b>SSC MTS</b></td>
+                            <td>Peon, Daftary, Jamadar, Mali</td>
+                            <td>10th Pass</td>
+                            <td>₹18,000 - ₹22,000</td>
+                        </tr>
+                        <tr>
+                            <td><b>SSC GD</b></td>
+                            <td>BSF, CISF, ITBP, CRPF Constable</td>
+                            <td>10th Pass</td>
+                            <td>₹21,700 - ₹69,100</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <button class="back-home-btn" onclick="closePostModal()">
+                    🏠 Return to Main Page
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
             <div class="hero-right">
                 <img src="img2.jpg" alt="Student" class="fade-in-right">
@@ -1105,4 +1180,5 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
