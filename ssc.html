@@ -59,7 +59,66 @@
     border: 1px solid #dee2e6;
     font-weight: bold;
 }
+/* Layout Fix */
+.hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: nowrap; /* ઈમેજ નીચે ન જાય તે માટે */
+}
 
+.hero-left { flex: 1; }
+.hero-right { flex: 1; text-align: right; }
+.hero-right img { max-width: 100%; height: auto; border-radius: 10px; }
+
+/* Modal Syllabus - આખા પેજ જેવું દેખાશે */
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: white; /* પૂરો સફેદ બેકગ્રાઉન્ડ */
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.modal-header {
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+/* Return Button Styling */
+.back-home-btn {
+    padding: 15px 40px;
+    background: #475569;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    margin: 30px auto; /* સેન્ટરમાં આવશે */
+}
+
+.back-home-btn:hover { background: #1e293b; }
+
+@media (max-width: 768px) {
+    .hero-flex { flex-direction: column; text-align: center; }
+    .hero-right { order: -1; }
+}
 /* ટેબલના દરેક ખાનામાં બોર્ડર અને યોગ્ય પેડિંગ */
 .post-table td {
     padding: 12px;
@@ -659,6 +718,25 @@ td {
 }
 </style>
 </head>
+    <script>
+function openPostModal() {
+    document.getElementById("postModal").style.display = "block";
+    document.body.style.overflow = "hidden"; // મેઈન પેજનું સ્ક્રોલિંગ બંધ
+}
+
+function closePostModal() {
+    document.getElementById("postModal").style.display = "none";
+    document.body.style.overflow = "auto"; // મેઈન પેજનું સ્ક્રોલિંગ ચાલુ
+}
+
+// બહાર ક્લિક કરવાથી બંધ થાય તે માટે
+window.onclick = function(event) {
+    let modal = document.getElementById("postModal");
+    if (event.target == modal) {
+        closePostModal();
+    }
+}
+</script>
 <body>
 
 <section class="home-hero">
@@ -1277,5 +1355,6 @@ function scrollToTop() {
 </body>
 
 </html>
+
 
 
