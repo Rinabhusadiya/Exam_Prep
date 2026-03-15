@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free quiz for SSC, Talati, Police, Railway and UPSC exams">
     <meta name="keywords" content="quiz, competitive exam, ssc quiz, talati quiz">
+    <title>Free Competitive Exam Quiz | SSC Talati Police Quiz</title>
+
+<meta name="description" content="Free quiz for SSC, Talati, Police, Railway and UPSC exams. Practice reasoning, maths and GK questions.">
+
+<meta name="robots" content="index, follow">
     <title>CCE Registration Dashboard</title>
     <style>
         :root {
@@ -116,7 +121,13 @@
     </div>
 
     <div id="table-section">
+        
         <h2>Registered Candidates</h2>
+        !-- SEARCH BOX -->
+    <input type="text" id="searchUser" placeholder="Search name, email or mobile..." 
+    onkeyup="searchUser()" style="padding:10px;width:100%;margin-bottom:15px;border-radius:8px;border:1px solid #ccc;">
+
+    <div style="overflow-x: auto;">
         <div style="overflow-x: auto;">
             <table id="userTable">
                 <thead>
@@ -150,7 +161,15 @@
             email: document.getElementById('email').value,
             mobile: document.getElementById('mobile').value
         };
+function searchUser(){
+let input = document.getElementById("searchUser").value.toLowerCase();
+let rows = document.querySelectorAll("#userTable tbody tr");
 
+rows.forEach(function(row){
+let text = row.innerText.toLowerCase();
+row.style.display = text.includes(input) ? "" : "none";
+});
+}
         let users = JSON.parse(localStorage.getItem('cce_records')) || [];
         users.push(newUser);
         localStorage.setItem('cce_records', JSON.stringify(users));
