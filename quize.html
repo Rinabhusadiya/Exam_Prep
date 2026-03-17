@@ -142,6 +142,46 @@
         margin-bottom: 30px;
     }
 }
+        <style>
+/* બોક્સને ગોઠવવા માટે */
+.subject-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* એક લાઈનમાં ૨ કાર્ડ બતાવશે */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* કાર્ડની ડિઝાઇન */
+.quiz-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;
+}
+
+/* માઉસ ઉપર લઈ જઈએ ત્યારે એનિમેશન */
+.quiz-card:hover {
+    transform: translateY(-10px); /* કાર્ડ થોડું ઉપર જશે */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background-color: #f9f9f9;
+}
+
+.quiz-card h3 {
+    margin: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.quiz-card p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+</style>
     </style>
 </head>
 <body>
@@ -188,14 +228,43 @@
         <button class="subject-btn" onclick="startQuiz('reasoning')">રીઝનીંગ </button>
         <button class="subject-btn" onclick="startQuiz('badharan')">બંધારણ </button>
     </div>
+    <div class="subject-box">
+    <div class="col">
+        <div class="quiz-card" onclick="startQuiz('bharat')">
+            <h3>🇮🇳 ભારત</h3>
+            <p>સામાન્ય જ્ઞાન</p>
+        </div>
+    </div>
 
+    <div class="col">
+        <div class="quiz-card" onclick="startQuiz('gujarat')">
+            <h3>🦁 ગુજરાત</h3>
+            <p>ઇતિહાસ અને ભૂગોળ</p>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="quiz-card" onclick="startQuiz('reasoning')">
+            <h3>🧠 રીઝનીંગ</h3>
+            <p>તાર્કિક કસોટી</p>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="quiz-card" onclick="startQuiz('badharan')">
+            <h3>📜 બંધારણ</h3>
+            <p>ભારતનું સંવિધાન</p>
+        </div>
+    </div>
+</div>
+<!-- 
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col"><div class="quiz-card" onclick="startQuiz('maths')"><h3>📐 Maths</h3><p> High Level</p></div></div>
             <div class="col"><div class="quiz-card" onclick="startQuiz('english')"><h3>🔤 English</h3><p> High Level</p></div></div>
             <div class="col"><div class="quiz-card" onclick="startQuiz('current')"><h3>📰 Current</h3><p> High Level</p></div></div>
         </div>
-    </div>
+    </div> -->
 
     <div class="quiz-container" id="quizDisplay">
         <div class="d-flex justify-content-between"><h5 id="quizTitle" class="text-info"></h5><span id="qCount" class="badge bg-secondary"></span></div>
